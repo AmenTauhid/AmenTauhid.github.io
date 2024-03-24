@@ -63,7 +63,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="text-gray-600 body-font">
+    <section id="about" class="text-gray-600 body-font reveal">
       <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-4/6 mx-auto">
           <div class="flex flex-col sm:flex-row mt-10">
@@ -125,7 +125,7 @@
     </section>
 
     <!-- Technical Skills Section -->
-    <section id="skills" class="text-gray-600 body-font">
+    <section id="skills" class="text-gray-600 body-font reveal">
       <div class="container px-5 py-24 mx-auto">
         <div class="text-center mb-20">
           <h1
@@ -181,7 +181,7 @@
     </section>
 
     <!-- Machine Learning Projects Section -->
-    <section id="ml-projects" class="text-gray-600 body-font">
+    <section id="ml-projects" class="text-gray-600 body-font reveal">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap -m-4">
           <div
@@ -258,7 +258,7 @@
     <!-- Similar to ML Projects Section, ensure there is a corresponding modal for each project -->
 
     <!-- Contact Section -->
-    <section id="contact" class="text-gray-600 body-font relative">
+    <section id="contact" class="text-gray-600 body-font relative reveal">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-12">
           <h1
@@ -347,6 +347,17 @@
     </section>
 
     <script>
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+        
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+          });
+
       ScrollReveal().reveal("section", { delay: 200 });
 
       // Modal functions
@@ -364,6 +375,16 @@
           closeModal(event.target.id);
         }
       };
+
+      ScrollReveal().reveal('.reveal', {
+        distance: '60px',
+        easing: 'ease-in-out',
+        origin: 'bottom',
+        opacity: 0,
+        viewFactor: 0.5, // Only reveal when element is 50% in view
+        duration: 500,
+        reset: true // Reset animation when element goes out of view
+      });
     </script>
   </body>
 </html>
