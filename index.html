@@ -28,6 +28,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+        /* Style for fade-up animation on scroll */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -58,7 +68,7 @@
             </section>
 
             <!-- About & Skills Section -->
-            <section id="about" class="py-16 md:py-24 border-t border-neutral-800">
+            <section id="about" class="py-16 md:py-24 border-t border-neutral-800 fade-up">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="md:col-span-1">
                         <h3 class="text-2xl font-semibold tracking-tight">About Me</h3>
@@ -93,7 +103,7 @@
             </section>
 
             <!-- Experience Section -->
-            <section id="experience" class="py-16 md:py-24 border-t border-neutral-800">
+            <section id="experience" class="py-16 md:py-24 border-t border-neutral-800 fade-up">
                 <h3 class="text-2xl font-semibold tracking-tight mb-8">Experience</h3>
                 <div class="space-y-12">
                     <!-- Job Item -->
@@ -144,7 +154,7 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="py-16 md:py-24 border-t border-neutral-800">
+            <section id="projects" class="py-16 md:py-24 border-t border-neutral-800 fade-up">
                 <h3 class="text-2xl font-semibold tracking-tight mb-8">Selected Projects</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Project Card -->
@@ -163,7 +173,7 @@
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="py-24 sm:py-32 text-center border-t border-neutral-800">
+            <section id="contact" class="py-24 sm:py-32 text-center border-t border-neutral-800 fade-up">
                  <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
                     Get In Touch
                 </h2>
@@ -194,21 +204,53 @@
     </div>
 
     <script>
-        // JavaScript to display the current local time in the footer
-        function updateTime() {
-            const timeElement = document.getElementById('local-time');
-            if (timeElement) {
-                const now = new Date();
-                // Using toLocaleTimeString to get a nicely formatted time for the user's locale
-                timeElement.textContent = `Local Time: ${now.toLocaleTimeString()}`;
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- SMOOTH SCROLL FOR NAV LINKS ---
+            // Select all links with href starting with '#'
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Prevent the default jump behavior
+                    e.preventDefault();
+
+                    // Get the target element's ID from the href attribute
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Use scrollIntoView with 'smooth' behavior
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- LOCAL TIME ---
+            function updateTime() {
+                const timeElement = document.getElementById('local-time');
+                if (timeElement) {
+                    const now = new Date();
+                    timeElement.textContent = `Local Time: ${now.toLocaleTimeString()}`;
+                }
             }
-        }
+            setInterval(updateTime, 1000);
+            updateTime();
 
-        // Update the time every second
-        setInterval(updateTime, 1000);
-
-        // Initial call to display the time immediately on load
-        updateTime();
+            // --- FADE-IN ANIMATION ON SCROLL ---
+            const animatedElements = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            animatedElements.forEach(el => observer.observe(el));
+        });
     </script>
 
 </body>
