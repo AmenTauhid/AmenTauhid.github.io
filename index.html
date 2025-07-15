@@ -46,20 +46,43 @@
     <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
 
         <!-- Header Navigation -->
-        <header class="flex justify-between items-center py-4 border-b border-neutral-800 sticky top-0 bg-[#111111]/80 backdrop-blur-lg z-10">
+        <header class="flex justify-between items-center py-4 border-b border-neutral-800 sticky top-0 bg-[#111111]/80 backdrop-blur-lg z-20">
             <h1 class="text-xl font-semibold tracking-tighter">Ayman Tauhid</h1>
+            
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-neutral-400">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#experience" class="hover:text-white transition-colors">Experience</a>
                 <a href="#projects" class="hover:text-white transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="z-30">
+                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
         </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-[#111111] z-10 flex flex-col items-center justify-center space-y-8 text-2xl">
+            <a href="#about" class="mobile-menu-link hover:text-white transition-colors">About</a>
+            <a href="#experience" class="mobile-menu-link hover:text-white transition-colors">Experience</a>
+            <a href="#projects" class="mobile-menu-link hover:text-white transition-colors">Projects</a>
+            <a href="#contact" class="mobile-menu-link hover:text-white transition-colors">Contact</a>
+        </div>
+
 
         <main>
             <!-- Hero Section -->
             <section id="hero" class="py-24 sm:py-32 text-center">
-                <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight">
+                <h2 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight">
                     Developing with Passion.
                 </h2>
                 <p class="mt-6 max-w-2xl mx-auto text-lg text-neutral-400">
@@ -205,7 +228,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- SMOOTH SCROLL FOR NAV LINKS ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+            // --- MOBILE MENU TOGGLE ---
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+                // Prevent scrolling of the body when the menu is open
+                document.body.classList.toggle('overflow-hidden');
+            });
+
+            // --- CLOSE MOBILE MENU ON LINK CLICK ---
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+
+            // --- SMOOTH SCROLL FOR ALL NAV LINKS ---
             const navLinks = document.querySelectorAll('a[href^="#"]');
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -234,15 +282,12 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Fade in when the element is in view
                         entry.target.classList.add('visible');
                     } else {
-                        // Fade out when the element is out of view
                         entry.target.classList.remove('visible');
                     }
                 });
             }, {
-                // Trigger when 20% of the element is visible
                 threshold: 0.2
             });
             animatedElements.forEach(el => observer.observe(el));
