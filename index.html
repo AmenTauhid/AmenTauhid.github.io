@@ -283,56 +283,33 @@
                 constellation = new THREE.Group();
 
                 // Star positions for Sagittarius "The Archer"
-                // Using an object to easily reference stars by name
                 const starsMap = {
-                    // Teapot Stars
-                    'KausBorealis': new THREE.Vector3(-60, -20, -200),
-                    'KausMedia': new THREE.Vector3(0, -30, -200),
-                    'KausAustralis': new THREE.Vector3(50, -5, -200),
-                    'Nunki': new THREE.Vector3(20, 35, -200),
-                    'Ascella': new THREE.Vector3(-40, 25, -200),
-                    'Alnasl': new THREE.Vector3(-90, -5, -200),
-                    'TauSgr': new THREE.Vector3(-50, -50, -200),
-                    'PhiSgr': new THREE.Vector3(20, -60, -200),
-                    // Additional stars for the bow
-                    'EtaSgr': new THREE.Vector3(70, 45, -200),
-                    'PsiSgr': new THREE.Vector3(-60, 75, -200)
+                    'KausBorealis': new THREE.Vector3(-60, -20, -200), 'KausMedia': new THREE.Vector3(0, -30, -200),
+                    'KausAustralis': new THREE.Vector3(50, -5, -200), 'Nunki': new THREE.Vector3(20, 35, -200),
+                    'Ascella': new THREE.Vector3(-40, 25, -200), 'Alnasl': new THREE.Vector3(-90, -5, -200),
+                    'TauSgr': new THREE.Vector3(-50, -50, -200), 'PhiSgr': new THREE.Vector3(20, -60, -200),
+                    'EtaSgr': new THREE.Vector3(70, 45, -200), 'PsiSgr': new THREE.Vector3(-60, 75, -200)
                 };
 
-                // Create points for the main stars
                 const starPoints = Object.values(starsMap);
                 const starPointsGeo = new THREE.BufferGeometry().setFromPoints(starPoints);
                 const starPointsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 3, transparent: true });
                 const constellationStars = new THREE.Points(starPointsGeo, starPointsMat);
                 constellation.add(constellationStars);
 
-                // Create lines connecting the stars
                 const lineMat = new THREE.LineBasicMaterial({ color: 0xaaaaaa, transparent: true, opacity: 0.5 });
-                
-                // Helper function to draw lines between stars by name
                 function connect(p1, p2) {
                     const geo = new THREE.BufferGeometry().setFromPoints([starsMap[p1], starsMap[p2]]);
                     const line = new THREE.Line(geo, lineMat);
                     constellation.add(line);
                 }
 
-                // Draw the Teapot (body of the archer)
-                connect('KausBorealis', 'KausMedia');
-                connect('KausMedia', 'KausAustralis');
-                connect('KausAustralis', 'PhiSgr');
-                connect('PhiSgr', 'TauSgr');
-                connect('TauSgr', 'Ascella');
-                connect('Ascella', 'Nunki');
-                connect('Nunki', 'KausMedia');
-                
-                // Draw the Arrow (spout of the teapot)
-                connect('KausBorealis', 'Alnasl');
-                connect('TauSgr', 'Alnasl');
-
-                // Draw the Bow
-                connect('KausAustralis', 'EtaSgr');
-                connect('EtaSgr', 'Nunki');
-                connect('Nunki', 'PsiSgr');
+                connect('KausBorealis', 'KausMedia'); connect('KausMedia', 'KausAustralis');
+                connect('KausAustralis', 'PhiSgr'); connect('PhiSgr', 'TauSgr');
+                connect('TauSgr', 'Ascella'); connect('Ascella', 'Nunki');
+                connect('Nunki', 'KausMedia'); connect('KausBorealis', 'Alnasl');
+                connect('TauSgr', 'Alnasl'); connect('KausAustralis', 'EtaSgr');
+                connect('EtaSgr', 'Nunki'); connect('Nunki', 'PsiSgr');
                 connect('PsiSgr', 'Ascella');
                 
                 scene.add(constellation);
@@ -352,15 +329,21 @@
             function animate() {
                 requestAnimationFrame(animate);
 
-                // Rotate the whole scene slightly
-                stars.rotation.x += 0.0001;
+                // Gently rotate the background starfield for a dynamic effect.
                 stars.rotation.y += 0.0001;
-                constellation.rotation.x += 0.0001;
-                constellation.rotation.y += 0.0001;
 
-                // Make camera react to mouse movement
-                camera.position.x += (mouseX * 0.00001 - camera.position.x) * 0.05;
-                camera.position.y += (-mouseY * 0.00001 - camera.position.y) * 0.05;
+                // The constellation does not get rotated, so it stays in the center.
+                // The parallax effect from the mouse movement will still apply to the whole scene.
+
+                // Make camera react to mouse movement for a parallax effect.
+                const targetX = mouseX * 0.00001;
+                const targetY = -mouseY * 0.00001;
+
+                // Smoothly move the camera towards the target position.
+                camera.position.x += (targetX - camera.position.x) * 0.05;
+                camera.position.y += (targetY - camera.position.y) * 0.05;
+                
+                // Always keep the camera pointing at the center of the scene.
                 camera.lookAt(scene.position);
 
                 renderer.render(scene, camera);
@@ -376,7 +359,6 @@
             const menuCloseIcon = document.getElementById('menu-close-icon');
             const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
 
-            // --- MOBILE MENU TOGGLE ---
             menuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
                 menuOpenIcon.classList.toggle('hidden');
@@ -384,7 +366,6 @@
                 document.body.classList.toggle('overflow-hidden');
             });
 
-            // --- CLOSE MOBILE MENU ON LINK CLICK ---
             mobileMenuLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
@@ -394,7 +375,6 @@
                 });
             });
 
-            // --- SMOOTH SCROLL FOR ALL NAV LINKS ---
             const navLinks = document.querySelectorAll('a[href^="#"]');
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -407,7 +387,6 @@
                 });
             });
 
-            // --- LOCAL TIME ---
             function updateTime() {
                 const timeElement = document.getElementById('local-time');
                 if (timeElement) {
@@ -418,7 +397,6 @@
             setInterval(updateTime, 1000);
             updateTime();
 
-            // --- FADE-IN/OUT ANIMATION ON SCROLL ---
             const animatedElements = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
