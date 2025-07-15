@@ -280,24 +280,28 @@
             }
 
             function createConstellation() {
-                // Using a group to hold all parts of the constellation
                 constellation = new THREE.Group();
 
-                // Star positions for Sagittarius's "Teapot" asterism
-                // These are approximate 2D coordinates scaled for the scene
-                const sagittariusStars = [
-                    new THREE.Vector3(-60, -20, -200), // Kaus Borealis (Lid)
-                    new THREE.Vector3(0, -30, -200),   // Kaus Meridionalis (Lid)
-                    new THREE.Vector3(50, -5, -200),   // Kaus Australis (Base)
-                    new THREE.Vector3(20, 35, -200),   // Nunki (Top of handle)
-                    new THREE.Vector3(-40, 25, -200),  // Ascella (Handle)
-                    new THREE.Vector3(-90, -5, -200),  // Alnasl (Spout)
-                    new THREE.Vector3(-50, -50, -200), // Tau Sagittarii (Base)
-                    new THREE.Vector3(20, -60, -200)   // Phi Sagittarii (Base)
-                ];
+                // Star positions for Sagittarius "The Archer"
+                // Using an object to easily reference stars by name
+                const starsMap = {
+                    // Teapot Stars
+                    'KausBorealis': new THREE.Vector3(-60, -20, -200),
+                    'KausMedia': new THREE.Vector3(0, -30, -200),
+                    'KausAustralis': new THREE.Vector3(50, -5, -200),
+                    'Nunki': new THREE.Vector3(20, 35, -200),
+                    'Ascella': new THREE.Vector3(-40, 25, -200),
+                    'Alnasl': new THREE.Vector3(-90, -5, -200),
+                    'TauSgr': new THREE.Vector3(-50, -50, -200),
+                    'PhiSgr': new THREE.Vector3(20, -60, -200),
+                    // Additional stars for the bow
+                    'EtaSgr': new THREE.Vector3(70, 45, -200),
+                    'PsiSgr': new THREE.Vector3(-60, 75, -200)
+                };
 
                 // Create points for the main stars
-                const starPointsGeo = new THREE.BufferGeometry().setFromPoints(sagittariusStars);
+                const starPoints = Object.values(starsMap);
+                const starPointsGeo = new THREE.BufferGeometry().setFromPoints(starPoints);
                 const starPointsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 3, transparent: true });
                 const constellationStars = new THREE.Points(starPointsGeo, starPointsMat);
                 constellation.add(constellationStars);
@@ -305,24 +309,32 @@
                 // Create lines connecting the stars
                 const lineMat = new THREE.LineBasicMaterial({ color: 0xaaaaaa, transparent: true, opacity: 0.5 });
                 
-                // Teapot body
-                const bodyPoints = [sagittariusStars[0], sagittariusStars[1], sagittariusStars[2], sagittariusStars[7], sagittariusStars[6], sagittariusStars[0]];
-                const bodyGeo = new THREE.BufferGeometry().setFromPoints(bodyPoints);
-                const bodyLine = new THREE.Line(bodyGeo, lineMat);
-                constellation.add(bodyLine);
+                // Helper function to draw lines between stars by name
+                function connect(p1, p2) {
+                    const geo = new THREE.BufferGeometry().setFromPoints([starsMap[p1], starsMap[p2]]);
+                    const line = new THREE.Line(geo, lineMat);
+                    constellation.add(line);
+                }
 
-                // Teapot handle
-                const handlePoints = [sagittariusStars[1], sagittariusStars[3], sagittariusStars[4], sagittariusStars[0]];
-                const handleGeo = new THREE.BufferGeometry().setFromPoints(handlePoints);
-                const handleLine = new THREE.Line(handleGeo, lineMat);
-                constellation.add(handleLine);
+                // Draw the Teapot (body of the archer)
+                connect('KausBorealis', 'KausMedia');
+                connect('KausMedia', 'KausAustralis');
+                connect('KausAustralis', 'PhiSgr');
+                connect('PhiSgr', 'TauSgr');
+                connect('TauSgr', 'Ascella');
+                connect('Ascella', 'Nunki');
+                connect('Nunki', 'KausMedia');
+                
+                // Draw the Arrow (spout of the teapot)
+                connect('KausBorealis', 'Alnasl');
+                connect('TauSgr', 'Alnasl');
 
-                // Teapot spout
-                const spoutPoints = [sagittariusStars[6], sagittariusStars[5], sagittariusStars[0]];
-                const spoutGeo = new THREE.BufferGeometry().setFromPoints(spoutPoints);
-                const spoutLine = new THREE.Line(spoutGeo, lineMat);
-                constellation.add(spoutLine);
-
+                // Draw the Bow
+                connect('KausAustralis', 'EtaSgr');
+                connect('EtaSgr', 'Nunki');
+                connect('Nunki', 'PsiSgr');
+                connect('PsiSgr', 'Ascella');
+                
                 scene.add(constellation);
             }
 
