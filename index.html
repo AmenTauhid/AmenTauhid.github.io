@@ -147,7 +147,7 @@
                         </div>
                         <div class="md:col-span-3">
                             <h4 class="font-semibold">Machine Learning Research Assistant</h4>
-                            <p class="mt-2 text-neutral-400">Co-authored a research paper published at ACM on hybrid ML models for indoor localization, achieving a 52% reduction in RMSE.</p>
+                            <p class="mt-2 text-neutral-400">Co-authored a <a href="https://dl.acm.org/doi/10.1145/3616390.3618289" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors">research paper published at ACM</a> on hybrid ML models for indoor localization, achieving a 52% reduction in RMSE.</p>
                         </div>
                     </div>
                 </div>
@@ -206,23 +206,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- SMOOTH SCROLL FOR NAV LINKS ---
-            // Select all links with href starting with '#'
             const navLinks = document.querySelectorAll('a[href^="#"]');
-
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    // Prevent the default jump behavior
                     e.preventDefault();
-
-                    // Get the target element's ID from the href attribute
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-
                     if (targetElement) {
-                        // Use scrollIntoView with 'smooth' behavior
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
             });
@@ -238,16 +229,21 @@
             setInterval(updateTime, 1000);
             updateTime();
 
-            // --- FADE-IN ANIMATION ON SCROLL ---
+            // --- FADE-IN/OUT ANIMATION ON SCROLL ---
             const animatedElements = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        // Fade in when the element is in view
                         entry.target.classList.add('visible');
+                    } else {
+                        // Fade out when the element is out of view
+                        entry.target.classList.remove('visible');
                     }
                 });
             }, {
-                threshold: 0.1
+                // Trigger when 20% of the element is visible
+                threshold: 0.2
             });
             animatedElements.forEach(el => observer.observe(el));
         });
