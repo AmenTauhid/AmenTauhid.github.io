@@ -242,7 +242,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- THREE.JS BACKGROUND ---
-            let scene, camera, renderer, stars;
+            let scene, camera, renderer, stars, constellation;
             let mouseX = 0, mouseY = 0;
 
             function initThreeJS() {
@@ -254,6 +254,19 @@
                 renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
                 renderer.setSize(window.innerWidth, window.innerHeight);
 
+                // Create the random starfield
+                createStarfield();
+
+                // Create the Sagittarius constellation
+                createConstellation();
+
+                window.addEventListener('resize', onWindowResize, false);
+                document.addEventListener('mousemove', onMouseMove, false);
+
+                animate();
+            }
+
+            function createStarfield() {
                 const starGeo = new THREE.BufferGeometry();
                 const starCount = 5000;
                 const positions = new Float32Array(starCount * 3);
@@ -261,20 +274,56 @@
                     positions[i] = (Math.random() - 0.5) * 800;
                 }
                 starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-                const starMaterial = new THREE.PointsMaterial({
-                    color: 0xaaaaaa,
-                    size: 0.7,
-                    transparent: true
-                });
-
+                const starMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.7, transparent: true });
                 stars = new THREE.Points(starGeo, starMaterial);
                 scene.add(stars);
+            }
 
-                window.addEventListener('resize', onWindowResize, false);
-                document.addEventListener('mousemove', onMouseMove, false);
+            function createConstellation() {
+                // Using a group to hold all parts of the constellation
+                constellation = new THREE.Group();
 
-                animate();
+                // Star positions for Sagittarius's "Teapot" asterism
+                // These are approximate 2D coordinates scaled for the scene
+                const sagittariusStars = [
+                    new THREE.Vector3(-60, -20, -200), // Kaus Borealis (Lid)
+                    new THREE.Vector3(0, -30, -200),   // Kaus Meridionalis (Lid)
+                    new THREE.Vector3(50, -5, -200),   // Kaus Australis (Base)
+                    new THREE.Vector3(20, 35, -200),   // Nunki (Top of handle)
+                    new THREE.Vector3(-40, 25, -200),  // Ascella (Handle)
+                    new THREE.Vector3(-90, -5, -200),  // Alnasl (Spout)
+                    new THREE.Vector3(-50, -50, -200), // Tau Sagittarii (Base)
+                    new THREE.Vector3(20, -60, -200)   // Phi Sagittarii (Base)
+                ];
+
+                // Create points for the main stars
+                const starPointsGeo = new THREE.BufferGeometry().setFromPoints(sagittariusStars);
+                const starPointsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 3, transparent: true });
+                const constellationStars = new THREE.Points(starPointsGeo, starPointsMat);
+                constellation.add(constellationStars);
+
+                // Create lines connecting the stars
+                const lineMat = new THREE.LineBasicMaterial({ color: 0xaaaaaa, transparent: true, opacity: 0.5 });
+                
+                // Teapot body
+                const bodyPoints = [sagittariusStars[0], sagittariusStars[1], sagittariusStars[2], sagittariusStars[7], sagittariusStars[6], sagittariusStars[0]];
+                const bodyGeo = new THREE.BufferGeometry().setFromPoints(bodyPoints);
+                const bodyLine = new THREE.Line(bodyGeo, lineMat);
+                constellation.add(bodyLine);
+
+                // Teapot handle
+                const handlePoints = [sagittariusStars[1], sagittariusStars[3], sagittariusStars[4], sagittariusStars[0]];
+                const handleGeo = new THREE.BufferGeometry().setFromPoints(handlePoints);
+                const handleLine = new THREE.Line(handleGeo, lineMat);
+                constellation.add(handleLine);
+
+                // Teapot spout
+                const spoutPoints = [sagittariusStars[6], sagittariusStars[5], sagittariusStars[0]];
+                const spoutGeo = new THREE.BufferGeometry().setFromPoints(spoutPoints);
+                const spoutLine = new THREE.Line(spoutGeo, lineMat);
+                constellation.add(spoutLine);
+
+                scene.add(constellation);
             }
 
             function onWindowResize() {
@@ -291,10 +340,13 @@
             function animate() {
                 requestAnimationFrame(animate);
 
+                // Rotate the whole scene slightly
                 stars.rotation.x += 0.0001;
                 stars.rotation.y += 0.0001;
+                constellation.rotation.x += 0.0001;
+                constellation.rotation.y += 0.0001;
 
-                // Make stars react to mouse movement
+                // Make camera react to mouse movement
                 camera.position.x += (mouseX * 0.00001 - camera.position.x) * 0.05;
                 camera.position.y += (-mouseY * 0.00001 - camera.position.y) * 0.05;
                 camera.lookAt(scene.position);
