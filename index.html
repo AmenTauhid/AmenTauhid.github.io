@@ -1,386 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Ayman Tauhid</title>
-    <link
-      href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/scrollreveal"></script>
-  </head>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111;
+            color: #E8E8E8;
+        }
+        /* Custom scrollbar for a more subtle look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4A4A4A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="antialiased">
 
-  <body>
-    <header class="text-gray-600 body-font bg-gray-100">
-      <div
-        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-      >
-        <a
-          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
-        >
-          <span class="ml-3 text-xl">Ayman Tauhid</span>
-        </a>
-        <nav
-          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
-        >
-          <a href="#home" class="mr-5 hover:text-gray-900">Home</a>
-          <a href="#about" class="mr-5 hover:text-gray-900">About</a>
-          <a href="#projects" class="mr-5 hover:text-gray-900">Projects</a>
-          <a href="#contact" class="mr-5 hover:text-gray-900">Contact</a>
-        </nav>
-      </div>
-    </header>
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
 
-    <!-- Home Section -->
-    <section id="home" class="text-gray-600 body-font">
-      <div
-        class="container mx-auto flex px-5 py-24 items-center justify-center flex-col"
-      >
-        <img
-          class="lg:w-1/6 md:w-2/6 w-3/6 mb-10 object-cover object-center rounded"
-          alt="hero"
-          src="https://source.unsplash.com/random/200x200?sig=avatar"
-        />
-        <div class="text-center lg:w-2/3 w-full">
-          <h1
-            class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
-          >
-            Hello, I'm Ayman Tauhid
-          </h1>
-          <p class="mb-8 leading-relaxed">
-            Third-year university student specializing in mobile application
-            development but with a love for machine learning. Passionate about
-            building smart solutions that make a difference.
-          </p>
-        </div>
-      </div>
-    </section>
+        <!-- Header Navigation -->
+        <header class="flex justify-between items-center py-4 border-b border-neutral-800">
+            <h1 class="text-xl font-semibold tracking-tighter">Your Name</h1>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-neutral-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </nav>
+        </header>
 
-    <!-- About Section -->
-    <section id="about" class="text-gray-600 body-font reveal">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="lg:w-4/6 mx-auto">
-          <div class="flex flex-col sm:flex-row mt-10">
-            <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-              <div
-                class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400"
-              >
-                <!-- Consider adding a personal avatar or icon here -->
-              </div>
-              <div
-                class="flex flex-col items-center text-center justify-center"
-              >
-                <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">
-                  Ayman Tauhid
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" class="py-24 sm:py-32 text-center">
+                <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight">
+                    Hello. I'm a developer with a passion for creating innovative mobile and web applications.
                 </h2>
-                <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                <p class="text-base">
-                  Software Developer & Machine Learning Enthusiast
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-neutral-400">
+                    Currently working as a Mobile Developer Intern at Geotab and pursuing a Computer Science degree at Sheridan College.
                 </p>
-              </div>
-            </div>
-            <div
-              class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left"
-            >
-              <p class="leading-relaxed text-lg mb-4">
-                As a passionate Software Developer currently engaged at the
-                Centre for Applied AI, Sheridan College, I focus on leveraging
-                cutting-edge technologies to solve complex problems. With a
-                strong foundation in Python, Java, Swift, Kotlin, and a suite of other
-                programming languages, I've developed innovative solutions that
-                span eye-tracking wearables to machine learning models for
-                indoor localization.
-              </p>
-              <p class="leading-relaxed text-lg mb-4">
-                My journey through technology began at Sheridan College, where I
-                pursued an Honours Bachelor of Computer Science with a focus on
-                Mobile Computing. This program not only sharpened my technical
-                skills but also deepened my understanding of the real-world
-                applications of software development and machine learning.
-              </p>
-              <p class="leading-relaxed text-lg mb-4">
-                Throughout my career, I've embraced challenges and opportunities
-                to grow - from developing OCR-based text extraction models at
-                Accolite Digital to contributing to hybrid ML models at TELUS.
-                My work is driven by a desire to make technology accessible and
-                impactful for everyone.
-              </p>
-              <p class="leading-relaxed text-lg mb-4">
-                In my free time, I enjoy connecting with the tech community,
-                contributing to open-source projects, and staying ahead of the
-                curve with the latest technological advancements. I'm always
-                open to new opportunities, collaborations, and ways to
-                contribute to exciting projects.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            </section>
 
-    <!-- Technical Skills Section -->
-    <section id="skills" class="text-gray-600 body-font reveal">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="text-center mb-20">
-          <h1
-            class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4"
-          >
-            Technical Skills
-          </h1>
-          <div class="flex justify-center">
-            <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
-          </div>
-        </div>
-        <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-          <div class="p-2 sm:w-1/2 w-full">
-            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-              <span class="title-font font-medium text-gray-900"
-                >Languages: Python, Java, Swift, Kotlin, C, C++, C#, JavaScript,
-                HTML, CSS</span
-              >
-            </div>
-          </div>
-          <div class="p-2 sm:w-1/2 w-full">
-            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-              <span class="title-font font-medium text-gray-900"
-                >Database: MongoDB, NoSQL, SQL</span
-              >
-            </div>
-          </div>
-          <div class="p-2 sm:w-1/2 w-full">
-            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-              <span class="title-font font-medium text-gray-900"
-                >Frameworks: ASP.NET Core, .NET Framework, Node.js, Flask,
-                Django, React, Spring Boot, Angular</span
-              >
-            </div>
-          </div>
-          <div class="p-2 sm:w-1/2 w-full">
-            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-              <span class="title-font font-medium text-gray-900"
-                >Tools: Git, GitHub/Bitbucket, Jira, Firebase, Google Cloud
-                Platform, AWS Lambda, Docker</span
-              >
-            </div>
-          </div>
-          <div class="p-2 sm:w-1/2 w-full">
-            <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-              <span class="title-font font-medium text-gray-900"
-                >Other: Proficient in English and Hindi</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <!-- About & Skills Section -->
+            <section id="about" class="py-16 md:py-24 border-t border-neutral-800">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="md:col-span-1">
+                        <h3 class="text-2xl font-semibold tracking-tight">About Me</h3>
+                    </div>
+                    <div class="md:col-span-2 space-y-8">
+                        <p class="text-lg text-neutral-300">
+                            I am a versatile developer with a strong foundation in both mobile and full-stack development. My experience ranges from building machine learning models for text extraction and eye-tracking to developing full-scale logistics applications. I thrive in collaborative environments and am driven by the challenge of solving complex problems with clean, efficient code.
+                        </p>
+                        <div>
+                            <h4 class="text-lg font-medium mb-4">Technical Skills</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold text-neutral-200">Languages</h5>
+                                    <p class="text-neutral-400">Python, Swift, Kotlin, Java, C#, JavaScript, HTML/CSS, Dart, SQL</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-neutral-200">Frameworks</h5>
+                                    <p class="text-neutral-400">ASP.NET Core, Flask, Flutter, React, Spring Boot, Angular</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-neutral-200">Databases</h5>
+                                    <p class="text-neutral-400">MongoDB, Firestore, MySQL, SQLite</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-neutral-200">Tools & Platforms</h5>
+                                    <p class="text-neutral-400">Git, Docker, Azure, GCP, AWS, Android Studio, XCode, Jira</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Projects Section -->
-<section id="projects" class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="text-center mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Projects</h1>
-        <div class="flex justify-center">
-          <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
-        </div>
-        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Here's a collection of my recent projects spanning machine learning, mobile app development, and more. Click on each to learn more about them.</p>
-      </div>
-      <div class="flex flex-wrap -m-4">
-        <!-- Project 1: MealHub -->
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden reveal">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://source.unsplash.com/random/720x400?food" alt="MealHub Project">
-            <div class="p-6">
-              <h2 class="text-base font-medium text-indigo-300 mb-1">Web Development</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">MealHub</h1>
-              <p class="leading-relaxed mb-3">Engineered a web app leveraging React.js, Python Flask, and MongoDB for meal planning and nutritional advice.</p>
-              <a href="https://github.com/AmenTauhid/MealHub" class="text-indigo-500 inline-flex items-center">Learn More
-                <!-- Icon -->
-              </a>
+            <!-- Experience Section -->
+            <section id="experience" class="py-16 md:py-24 border-t border-neutral-800">
+                <h3 class="text-2xl font-semibold tracking-tight mb-8">Experience</h3>
+                <div class="space-y-12">
+                    <!-- Job Item -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="md:col-span-1">
+                            <p class="font-medium text-neutral-300">Geotab</p>
+                            <p class="text-sm text-neutral-500">Jan 2025 – Present</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h4 class="font-semibold">Mobile Developer Intern</h4>
+                            <p class="mt-2 text-neutral-400">Developing new features and fixing bugs for Geotab's Android and iOS mobile products, ensuring high quality through code reviews and testing.</p>
+                        </div>
+                    </div>
+                    <!-- Job Item -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="md:col-span-1">
+                            <p class="font-medium text-neutral-300">Oakville Centre For Vision</p>
+                            <p class="text-sm text-neutral-500">Oct 2023 – Dec 2024</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h4 class="font-semibold">Full Stack Developer</h4>
+                            <p class="mt-2 text-neutral-400">Developed Python-based eye-tracking software with 85% accuracy and built the full stack with React and Flask. Automated ETL processes, reducing manual overhead by 50%.</p>
+                        </div>
+                    </div>
+                    <!-- Job Item -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="md:col-span-1">
+                            <p class="font-medium text-neutral-300">Accolite Digital</p>
+                            <p class="text-sm text-neutral-500">May 2023 – Aug 2023</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h4 class="font-semibold">Machine Learning Developer Intern</h4>
+                            <p class="mt-2 text-neutral-400">Led development of OCR models, improving text-extraction accuracy by 78%. Deployed solutions on AWS Lambda, doubling processing efficiency.</p>
+                        </div>
+                    </div>
+                     <!-- Job Item -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="md:col-span-1">
+                            <p class="font-medium text-neutral-300">Sheridan College (CAAI)</p>
+                            <p class="text-sm text-neutral-500">Sep 2022 – Apr 2023</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <h4 class="font-semibold">Machine Learning Research Assistant</h4>
+                            <p class="mt-2 text-neutral-400">Co-authored a research paper published at ACM on hybrid ML models for indoor localization, achieving a 52% reduction in RMSE.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="py-16 md:py-24 border-t border-neutral-800">
+                <h3 class="text-2xl font-semibold tracking-tight mb-8">Selected Projects</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Project Card -->
+                    <a href="#" class="group block p-6 bg-neutral-900/50 rounded-lg border border-transparent hover:border-neutral-700 transition-all">
+                        <h4 class="text-lg font-semibold">NextHorizon</h4>
+                        <p class="mt-2 text-neutral-400">An iOS app that uses the Gemini API to provide personalized career advice for high school students. Awarded for best use of GenAI at Hackville 2025.</p>
+                        <p class="mt-4 text-sm font-medium text-neutral-500">SwiftUI, Python, FastAPI, GCP, Gemini API</p>
+                    </a>
+                    <!-- Project Card -->
+                    <a href="#" class="group block p-6 bg-neutral-900/50 rounded-lg border border-transparent hover:border-neutral-700 transition-all">
+                        <h4 class="text-lg font-semibold">Hauler</h4>
+                        <p class="mt-2 text-neutral-400">A full-stack logistics and fleet service application with an iOS app and web portal. Features user authentication, job management, and map views.</p>
+                        <p class="mt-4 text-sm font-medium text-neutral-500">React, Swift, C# (.NET Core), SQL, Azure</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-24 sm:py-32 text-center border-t border-neutral-800">
+                 <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+                    Get In Touch
+                </h2>
+                <p class="mt-4 max-w-xl mx-auto text-lg text-neutral-400">
+                    I'm always open to discussing new projects or opportunities. Feel free to reach out.
+                </p>
+                <div class="mt-8">
+                    <a href="mailto:your.email@example.com" class="inline-block bg-white text-black font-medium px-6 py-3 rounded-full hover:bg-neutral-200 transition-colors">
+                        your.email@example.com
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="py-6 text-sm text-neutral-500 border-t border-neutral-800">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-neutral-300 transition-colors">LinkedIn</a>
+                    <a href="#" class="hover:text-neutral-300 transition-colors">GitHub</a>
+                </div>
+                <div class="text-center sm:text-right">
+                    <p>Oakville, ON</p>
+                    <p id="local-time"></p>
+                </div>
             </div>
-          </div>
-        </div>
-        <!-- Project 2: ComicVault -->
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden reveal">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://images.unsplash.com/photo-1711318682143-48f6be189db3?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ComicVault Project">
-            <div class="p-6">
-              <h2 class="text-base font-medium text-indigo-300 mb-1">Mobile Development</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">ComicVault</h1>
-              <p class="leading-relaxed mb-3">Developed an iOS app for comic enthusiasts to manage their collections, integrated with the eBay API for real-time pricing.</p>
-              <a href="https://github.com/AmenTauhid/ComicVault" class="text-indigo-500 inline-flex items-center">Learn More
-                <!-- Icon -->
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- Project 3: PlayPals -->
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden reveal">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://source.unsplash.com/random/720x400?gaming" alt="PlayPals Project">
-            <div class="p-6">
-              <h2 class="text-base font-medium text-indigo-300 mb-1">Web Development</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">PlayPals</h1>
-              <p class="leading-relaxed mb-3">Co-engineered a web application for gamers to socialize and connect, utilizing .NET 7, C#, and RestAPIs.</p>
-              <a href="https://github.com/elias-aa/PlayPals" class="text-indigo-500 inline-flex items-center">Learn More
-                <!-- Icon -->
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- Add more projects as needed -->
-      </div>
+        </footer>
     </div>
-  </section>
-  
-
-    <!-- Modal for Machine Learning Projects 
-    <div
-      id="modal-mlproject"
-      class="hidden fixed z-50 left-0 top-0 w-full h-full overflow-auto bg-black bg-opacity-40"
-    >
-      <div
-        class="modal-content bg-white w-1/2 mx-auto mt-20 p-5 border rounded shadow-lg"
-      >
-        <span
-          class="close cursor-pointer float-right text-gray-700 hover:text-black"
-          onclick="closeModal('modal-mlproject')"
-          >&times;</span
-        >
-        <h2 class="text-2xl mb-4">Project Title</h2>
-        <p>Some text about the project...</p>
-      </div>
-    </div>
-    -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="text-gray-600 body-font relative reveal">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-12">
-          <h1
-            class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
-          >
-            Contact Me
-          </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Feel free to drop a message or reach out through social platforms.
-          </p>
-        </div>
-        <div class="lg:w-1/2 md:w-2/3 mx-auto">
-          <form
-            action="YOUR_FORM_ACTION"
-            method="POST"
-            class="flex flex-wrap -m-2"
-          >
-            <div class="p-2 w-1/2">
-              <div class="relative">
-                <label for="name" class="leading-7 text-sm text-gray-600"
-                  >Name</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-            </div>
-            <div class="p-2 w-1/2">
-              <div class="relative">
-                <label for="email" class="leading-7 text-sm text-gray-600"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-            </div>
-            <div class="p-2 w-full">
-              <div class="relative">
-                <label for="message" class="leading-7 text-sm text-gray-600"
-                  >Message</label
-                >
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                ></textarea>
-              </div>
-            </div>
-            <div class="p-2 w-full">
-              <button
-                type="submit"
-                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-              >
-                Send
-              </button>
-            </div>
-          </form>
-          <div
-            class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"
-          >
-            <a href="mailto:your.email@example.com" class="text-indigo-500"
-              >aymantauhid2@gmail.com</a
-            >
-            <p class="leading-normal my-5">
-              Oakville, Ontario <br />Earth, Milky Way Galaxy
-            </p>
-            <span class="inline-flex">
-              <a class="text-gray-500">
-                <!-- Insert social icons with links -->
-              </a>
-              <!-- Repeat for other social icons -->
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <script>
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-        
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-          });
-
-      ScrollReveal().reveal("section", { delay: 200 });
-
-      // Modal functions
-      function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-      }
-
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
-
-      // Close modal if outside click
-      window.onclick = function (event) {
-        if (event.target.className.includes("fixed")) {
-          closeModal(event.target.id);
+        // JavaScript to display the current local time in the footer
+        function updateTime() {
+            const timeElement = document.getElementById('local-time');
+            if (timeElement) {
+                const now = new Date();
+                // Using toLocaleTimeString to get a nicely formatted time for the user's locale
+                timeElement.textContent = `Local Time: ${now.toLocaleTimeString()}`;
+            }
         }
-      };
 
-      ScrollReveal().reveal('.reveal', {
-        distance: '60px',
-        easing: 'ease-in-out',
-        origin: 'bottom',
-        opacity: 0,
-        viewFactor: 0.5, // Only reveal when element is 50% in view
-        duration: 500,
-        reset: true // Reset animation when element goes out of view
-      });
+        // Update the time every second
+        setInterval(updateTime, 1000);
+
+        // Initial call to display the time immediately on load
+        updateTime();
     </script>
-  </body>
+
+</body>
 </html>
