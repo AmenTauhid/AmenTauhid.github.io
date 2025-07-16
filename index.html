@@ -62,35 +62,20 @@
         <header class="flex justify-between items-center py-4 border-b border-neutral-800 sticky top-0 bg-[#111111]/80 backdrop-blur-lg z-20">
             <h1 class="text-xl font-semibold tracking-tighter">Ayman Tauhid</h1>
             
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-neutral-300">
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-            </nav>
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="z-30">
-                    <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            <!-- Social Icons -->
+            <div class="flex items-center space-x-4">
+                <a href="https://www.linkedin.com/in/aymantauhid/" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path>
                     </svg>
-                    <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </a>
+                <a href="https://github.com/AmenTauhid" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path>
                     </svg>
-                </button>
+                </a>
             </div>
         </header>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-[#111111] z-10 flex flex-col items-center justify-center space-y-8 text-2xl">
-            <a href="#about" class="mobile-menu-link hover:text-white transition-colors">About</a>
-            <a href="#experience" class="mobile-menu-link hover:text-white transition-colors">Experience</a>
-            <a href="#projects" class="mobile-menu-link hover:text-white transition-colors">Projects</a>
-            <a href="#contact" class="mobile-menu-link hover:text-white transition-colors">Contact</a>
-        </div>
-
 
         <main>
             <!-- Hero Section -->
@@ -194,13 +179,13 @@
                 <h3 class="text-2xl font-semibold tracking-tight mb-8">Selected Projects</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Project Card -->
-                    <a href="https://devpost.com/software/nexthorizion" class="group block p-6 bg-neutral-900/50 rounded-lg border border-transparent hover:border-neutral-700 transition-all">
+                    <a href="#" class="group block p-6 bg-neutral-900/50 rounded-lg border border-transparent hover:border-neutral-700 transition-all">
                         <h4 class="text-lg font-semibold">NextHorizon</h4>
                         <p class="mt-2 text-neutral-200">An iOS app that uses the Gemini API to provide personalized career advice for high school students. Awarded for best use of GenAI at Hackville 2025.</p>
                         <p class="mt-4 text-sm font-medium text-neutral-400">SwiftUI, Python, FastAPI, GCP, Gemini API</p>
                     </a>
                     <!-- Project Card -->
-                    <a href="https://github.com/HighwayHackers/mobile-app-client" class="group block p-6 bg-neutral-900/50 rounded-lg border border-transparent hover:border-neutral-700 transition-all">
+                    <a href="#" class="group block p-6 bg-neutral-900/50 rounded-lg border border-transparent hover:border-neutral-700 transition-all">
                         <h4 class="text-lg font-semibold">Hauler</h4>
                         <p class="mt-2 text-neutral-200">A full-stack logistics and fleet service application with an iOS app and web portal. Features user authentication, job management, and map views.</p>
                         <p class="mt-4 text-sm font-medium text-neutral-400">React, Swift, C# (.NET Core), SQL, Azure</p>
@@ -210,7 +195,7 @@
 
             <!-- Contact Section -->
             <section id="contact" class="py-24 sm:py-32 text-center border-t border-neutral-800 fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+                 <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
                     Get In Touch
                 </h2>
                 <p class="mt-4 max-w-xl mx-auto text-lg text-neutral-200">
@@ -226,12 +211,8 @@
 
         <!-- Footer -->
         <footer class="py-6 text-sm text-neutral-400 border-t border-neutral-800">
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="flex items-center space-x-4">
-                    <a href="https://www.linkedin.com/in/aymantauhid/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-100 transition-colors">LinkedIn</a>
-                    <a href="https://github.com/AmenTauhid" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-100 transition-colors">GitHub</a>
-                </div>
-                <div class="text-center sm:text-right">
+            <div class="flex justify-center items-center text-center">
+                <div>
                     <p id="local-time"></p>
                 </div>
             </div>
@@ -352,40 +333,6 @@
 
 
             // --- UI SCRIPT ---
-            const menuBtn = document.getElementById('menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpenIcon = document.getElementById('menu-open-icon');
-            const menuCloseIcon = document.getElementById('menu-close-icon');
-            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                menuOpenIcon.classList.toggle('hidden');
-                menuCloseIcon.classList.toggle('hidden');
-                document.body.classList.toggle('overflow-hidden');
-            });
-
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    menuOpenIcon.classList.remove('hidden');
-                    menuCloseIcon.classList.add('hidden');
-                    document.body.classList.remove('overflow-hidden');
-                });
-            });
-
-            const navLinks = document.querySelectorAll('a[href^="#"]');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
             function updateTime() {
                 const timeElement = document.getElementById('local-time');
                 if (timeElement) {
