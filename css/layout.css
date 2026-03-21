@@ -116,7 +116,7 @@
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 104px 16px 70px;
+  padding: 104px 16px 120px;
   scroll-behavior: smooth;
 }
 

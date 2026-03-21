@@ -1,7 +1,7 @@
 /* Tablet */
 @media (max-width: 768px) {
   .message-area {
-    padding: 100px 12px 66px;
+    padding: 100px 12px 116px;
   }
 
   .message-container {
@@ -64,7 +64,7 @@
   }
 
   .message-area {
-    padding: 88px 8px 62px;
+    padding: 88px 8px 110px;
   }
 
   .message-area::before {
