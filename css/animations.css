@@ -57,13 +57,19 @@
   transform: none;
 }
 
+.hero-skip .hero-typing {
+  display: none;
+}
+
 /* Typing indicator for hero sequence */
 .hero-typing {
+  display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .hero-typing.show {
+  display: inline-flex;
   opacity: 1;
 }
 
