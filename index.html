@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amen Tauhid | Software Developer</title>
+  <meta name="description" content="Full Stack & Mobile Developer based in Ontario, Canada. Building for web, iOS, and the cloud.">
+  <meta property="og:title" content="Amen Tauhid | Software Developer">
+  <meta property="og:description" content="Full Stack & Mobile Developer based in Ontario, Canada.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/bubbles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- iMessage Header -->
+    <header class="header">
+      <div class="header-left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>Messages</span>
+      </div>
+      <div class="header-center">
+        <div class="header-avatar">AT</div>
+        <div class="header-name">Amen Tauhid</div>
+        <div class="header-subtitle">Software Developer</div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scrollable Message Area -->
+    <main class="message-area">
+      <div class="message-container">
+
+        <!-- ===== HERO / INTRO ===== -->
+        <div id="hero" class="message-group hero-animate">
+          <div class="timestamp">Today 10:00 AM</div>
+
+          <div class="bubble sent solo">Hey! Tell me about yourself.</div>
+
+          <div class="hero-typing typing-indicator">
+            <span></span><span></span><span></span>
+          </div>
+
+          <div class="bubble received first">Hey there! I'm Amen Tauhid</div>
+          <div class="bubble received middle">Full Stack & Mobile Developer based in Ontario, Canada.</div>
+          <div class="bubble received last">I build things for the web, iOS, and the cloud -- with intention.</div>
+
+          <div class="receipt">Delivered</div>
+
+          <div class="contact-pills">
+            <a href="https://github.com/AmenTauhid" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/amentauhid" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- ===== FEATURED PROJECTS ===== -->
+        <div class="message-group">
+          <div class="timestamp reveal">10:02 AM</div>
+
+          <div class="bubble sent solo reveal from-right">What are you working on?</div>
+          <div class="bubble received solo reveal from-left">Here are a couple projects I'm proud of</div>
+
+          <div class="project-cards">
+            <div class="project-card reveal from-left delay-1" data-modal="hauler">
+              <div class="project-card-thumb">Hauler</div>
+              <div class="project-card-body">
+                <div class="project-card-label">Full-Stack Platform</div>
+                <div class="project-card-title">Hauler App</div>
+                <div class="project-card-desc">End-to-end freight management suite with web portal, iOS driver app, and REST API.</div>
+                <div class="tech-tags">
+                  <span class="tech-tag">C#</span>
+                  <span class="tech-tag">ASP.NET</span>
+                  <span class="tech-tag">Swift</span>
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Azure</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-card reveal from-left delay-2" data-modal="nexthorizon">
+              <div class="project-card-thumb">NH</div>
+              <div class="project-card-body">
+                <div class="project-card-label">Hackathon Winner</div>
+                <div class="project-card-title">NextHorizon</div>
+                <div class="project-card-desc">AI-powered career guidance platform. Winner of Best Use of GenAI at Hackville 2025.</div>
+                <div class="tech-tags">
+                  <span class="tech-tag">SwiftUI</span>
+                  <span class="tech-tag">FastAPI</span>
+                  <span class="tech-tag">Gemini AI</span>
+                  <span class="tech-tag">Docker</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="receipt reveal from-left delay-3">Read 10:03 AM</div>
+        </div>
+
+        <!-- ===== WORK EXPERIENCE ===== -->
+        <div class="message-group">
+          <div class="timestamp reveal">10:05 AM</div>
+
+          <div class="bubble sent solo reveal from-right">Where have you worked?</div>
+          <div class="bubble received solo reveal from-left">Here's my journey so far:</div>
+
+          <div class="experience-cards">
+
+            <!-- 1. Sheridan/UHN -->
+            <div class="experience-card reveal from-left delay-1">
+              <div class="experience-header">
+                <div class="experience-logo">UHN</div>
+                <div class="experience-meta">
+                  <div class="experience-role">Full Stack Developer</div>
+                  <div class="experience-company">Sheridan College - UHN</div>
+                </div>
+                <div class="experience-date">Sep - Dec 2025</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Built patient analytics dashboard with Recharts for real-time performance tracking across 17+ weeks</li>
+                <li>Developed Excel export system for intervention assessment data (MST, EMQ, IPAQ)</li>
+                <li class="hidden-bullet">Implemented batch user progress fetching with memoized calculations</li>
+                <li class="hidden-bullet">Created progressive content unlock system with Zustand state management</li>
+                <li class="hidden-bullet">Developed IdleTimeoutProvider for session security and inactivity logout</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Next.js 15</span>
+                <span class="tech-tag">React 19</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">Zustand</span>
+              </div>
+              <button class="show-more-btn" onclick="toggleExpand(this)">Show more</button>
+            </div>
+
+            <!-- 2. Geotab -->
+            <div class="experience-card reveal from-left delay-2">
+              <div class="experience-header">
+                <div class="experience-logo">GT</div>
+                <div class="experience-meta">
+                  <div class="experience-role">Mobile Developer Intern</div>
+                  <div class="experience-company">Geotab</div>
+                </div>
+                <div class="experience-date">Jan - Aug 2025</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Exposed native device data (Device ID, speed, location, accelerometer) to JavaScript layer for iOS and Android</li>
+                <li>Implemented BigQuery crash logging, code coverage reporting, and Superset dashboards</li>
+                <li class="hidden-bullet">Addressed iOS technical debt: window management, UI component deprecations, permissions</li>
+                <li class="hidden-bullet">Enabled WebView debugging for release builds and fixed network connectivity bugs</li>
+                <li class="hidden-bullet">Achieved ~70% code coverage metrics across mobile codebase</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">iOS</span>
+                <span class="tech-tag">Android</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">BigQuery</span>
+                <span class="tech-tag">Superset</span>
+              </div>
+              <button class="show-more-btn" onclick="toggleExpand(this)">Show more</button>
+            </div>
+
+            <!-- 3. OCV -->
+            <div class="experience-card reveal from-left delay-3">
+              <div class="experience-header">
+                <div class="experience-logo">OCV</div>
+                <div class="experience-meta">
+                  <div class="experience-role">Full Stack Developer</div>
+                  <div class="experience-company">Oakville Centre For Vision</div>
+                </div>
+                <div class="experience-date">Apr - Aug 2024</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Achieved 85% tracking accuracy in medical software using deep learning (Python, OpenCV)</li>
+                <li>Developed React interfaces and Flask microservices for eye-tracking software</li>
+                <li class="hidden-bullet">Automated ETL processes and task scheduling with robust CI/CD pipelines, reducing manual overhead by 50%</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+              <button class="show-more-btn" onclick="toggleExpand(this)">Show more</button>
+            </div>
+
+            <!-- 4. Accolite -->
+            <div class="experience-card reveal from-left delay-4">
+              <div class="experience-header">
+                <div class="experience-logo">AC</div>
+                <div class="experience-meta">
+                  <div class="experience-role">ML Developer Intern</div>
+                  <div class="experience-company">Accolite</div>
+                </div>
+                <div class="experience-date">May - Aug 2023</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Developed scalable AWS Lambda cloud solutions, doubling processing efficiency</li>
+                <li>Led creation of three Python OCR models using PyTorch, enhancing extraction accuracy by 78%</li>
+                <li class="hidden-bullet">Delivered technical reports with data visualizations and predictive models via Tableau</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">AWS Lambda</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Tableau</span>
+              </div>
+              <button class="show-more-btn" onclick="toggleExpand(this)">Show more</button>
+            </div>
+
+            <!-- 5. TELUS/Sheridan -->
+            <div class="experience-card reveal from-left delay-5">
+              <div class="experience-header">
+                <div class="experience-logo">TEL</div>
+                <div class="experience-meta">
+                  <div class="experience-role">ML Research Assistant</div>
+                  <div class="experience-company">Sheridan College - TELUS</div>
+                </div>
+                <div class="experience-date">Sep 2022 - Apr 2023</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Designed hybrid ML models for Bluetooth indoor localization achieving 76% reduction in positioning errors</li>
+                <li>Published peer-reviewed research paper at ACM MSWIM '23 Conference</li>
+                <li class="hidden-bullet">Developed multi-stage ML pipeline with SVM, Random Forest, and KNN classifiers</li>
+                <li class="hidden-bullet">Engineered Asymmetric Line Shifting algorithm with 273% improvement in R-squared values</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">SVM</span>
+                <span class="tech-tag">Random Forest</span>
+                <span class="tech-tag">KNN</span>
+              </div>
+              <button class="show-more-btn" onclick="toggleExpand(this)">Show more</button>
+            </div>
+
+          </div>
+
+          <div class="receipt reveal from-left delay-6">Delivered</div>
+        </div>
+
+        <!-- ===== SKILLS ===== -->
+        <div class="message-group">
+          <div class="timestamp reveal">10:08 AM</div>
+
+          <div class="bubble sent solo reveal from-right">What tech do you use?</div>
+          <div class="bubble received solo reveal from-left">Here's my toolkit:</div>
+
+          <div class="skills-card reveal from-left delay-1">
+            <div class="skills-category">
+              <div class="skills-category-title">Languages</div>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Swift</span>
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="skills-category">
+              <div class="skills-category-title">Frontend</div>
+              <div class="tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">SwiftUI</span>
+                <span class="tech-tag">Tailwind CSS</span>
+              </div>
+            </div>
+            <div class="skills-category">
+              <div class="skills-category-title">Backend</div>
+              <div class="tech-tags">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">ASP.NET Core</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">Supabase</span>
+              </div>
+            </div>
+            <div class="skills-category">
+              <div class="skills-category-title">Cloud & DevOps</div>
+              <div class="tech-tags">
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">Azure</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">GitHub Actions</span>
+              </div>
+            </div>
+            <div class="skills-category">
+              <div class="skills-category-title">ML / AI</div>
+              <div class="tech-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Gemini AI</span>
+                <span class="tech-tag">Tableau</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== ABOUT / BACKSTORY ===== -->
+        <div class="message-group">
+          <div class="timestamp reveal">10:12 AM</div>
+
+          <div class="bubble sent solo reveal from-right">Tell me your story.</div>
+
+          <div class="bubble received first reveal from-left delay-1">I started my journey in ML research at Sheridan College, where I published a paper on Bluetooth indoor localization at the ACM MSWIM '23 Conference.</div>
+          <div class="bubble received middle reveal from-left delay-2">From there I moved into full-stack and mobile development -- from medical eye-tracking software to enterprise logistics platforms to building native iOS apps at Geotab.</div>
+          <div class="bubble received mission last reveal from-left delay-3">My mission: build software that solves real problems, with intention and craft.</div>
+
+          <div class="bubble sent solo reveal from-right delay-4">That's impressive. What's next?</div>
+
+          <div class="bubble received solo reveal from-left delay-5">Always looking for the next challenge. Let's connect!</div>
+
+          <div class="receipt reveal from-left delay-6">Read 10:15 AM</div>
+        </div>
+
+        <!-- ===== CONTACT ===== -->
+        <div class="message-group">
+          <div id="contact" class="section-anchor"></div>
+          <div class="timestamp reveal">10:16 AM</div>
+
+          <div class="bubble sent solo reveal from-right">How do I connect?</div>
+
+          <div class="bubble received solo reveal from-left delay-1">Reach out anytime!</div>
+
+          <div class="contact-card reveal from-left delay-2">
+            <div class="contact-avatar">AT</div>
+            <div class="contact-name">Amen Tauhid</div>
+            <div class="contact-title">Software Developer</div>
+            <div class="contact-links">
+              <a href="https://github.com/AmenTauhid" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span class="contact-link-text">github.com/AmenTauhid</span>
+              </a>
+              <a href="https://linkedin.com/in/amentauhid" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <span class="contact-link-text">linkedin.com/in/amentauhid</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="typing-indicator reveal from-left delay-3">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Fixed Input Bar -->
+    <div class="input-bar">
+      <div class="input-bar-plus">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      </div>
+      <div class="input-field">Message Amen...</div>
+      <a href="#contact" class="input-send" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </a>
+    </div>
+
+    <!-- ===== CASE STUDY MODALS ===== -->
+
+    <!-- Hauler App Modal -->
+    <div class="modal-overlay" id="hauler-overlay"></div>
+    <div class="modal" id="hauler-modal">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeModal('hauler')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <span class="modal-title">Hauler App</span>
+        <div style="width:30px"></div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-hero">Hauler App</div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Overview</h2>
+          <p>HighwayHackers: A comprehensive end-to-end freight logistics ecosystem comprising a React web portal for administrative oversight, a SwiftUI mobile application for driver operations, and an ASP.NET Core REST API hosted on Azure.</p>
+        </div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Key Contributions</h2>
+          <ul>
+            <li>Architected cross-platform system using Repository and DTO patterns for clean separation of concerns across web, mobile, and API layers</li>
+            <li>Built complete load lifecycle and bidding system (Listed, Accepted, Pickup, Delivery) with real-time audit trails</li>
+            <li>Implemented JWT-based authentication with iOS Keychain storage and role-based access control (RBAC)</li>
+            <li>Designed complex relational database schema with Entity Framework Code-First migrations on Azure SQL</li>
+            <li>Built reactive UIs using Combine framework (iOS) and Formik/Yup validation (Web)</li>
+            <li>Set up automated CI/CD pipelines with GitHub Actions and Azure VM deployments using PM2 process management</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Tech Stack</h2>
+          <table class="modal-tech-table">
+            <tr><td>Backend</td><td>C# / ASP.NET Core 7.0</td></tr>
+            <tr><td>Mobile</td><td>Swift / SwiftUI</td></tr>
+            <tr><td>Web</td><td>React 18 / TypeScript</td></tr>
+            <tr><td>Database</td><td>Azure SQL / Entity Framework</td></tr>
+            <tr><td>Auth</td><td>JWT / iOS Keychain / RBAC</td></tr>
+            <tr><td>DevOps</td><td>GitHub Actions / Azure VM / PM2</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- NextHorizon Modal -->
+    <div class="modal-overlay" id="nexthorizon-overlay"></div>
+    <div class="modal" id="nexthorizon-modal">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeModal('nexthorizon')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <span class="modal-title">NextHorizon</span>
+        <div style="width:30px"></div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-hero">NextHorizon</div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Overview</h2>
+          <p>NextHorizon is a full-stack career guidance platform that won Best Use of GenAI at Hackville 2025. It helps students explore career paths through AI-driven personalized guidance and real job opportunities.</p>
+        </div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Key Contributions</h2>
+          <ul>
+            <li>Built SwiftUI mobile app with 4 main modules: Home Dashboard, AI Career Advisor, Job Board, and Account Settings</li>
+            <li>Integrated OAuth 2.0 authentication using Auth0 with reactive state management (@StateObject, @EnvironmentObject, @Published)</li>
+            <li>Implemented multi-language support for 5 languages (English, Spanish, French, Arabic, Chinese) with Google Translate API caching</li>
+            <li>Developed FastAPI backend with Google Gemini 1.5 Flash AI integration and custom "Pathfinder" career advisor persona</li>
+            <li>Integrated TheirStack Jobs API for real-time job search with dynamic filtering</li>
+            <li>Containerized the application with Docker using Python 3.13 and Uvicorn ASGI server</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Tech Stack</h2>
+          <table class="modal-tech-table">
+            <tr><td>Mobile</td><td>SwiftUI / iOS</td></tr>
+            <tr><td>Backend</td><td>FastAPI / Python 3.13</td></tr>
+            <tr><td>AI</td><td>Google Gemini 1.5 Flash</td></tr>
+            <tr><td>Auth</td><td>Auth0 / OAuth 2.0</td></tr>
+            <tr><td>APIs</td><td>Google Translate / TheirStack Jobs</td></tr>
+            <tr><td>DevOps</td><td>Docker / Uvicorn</td></tr>
+          </table>
+        </div>
+
+        <div class="modal-section">
+          <h2 class="modal-section-title">Impact</h2>
+          <p>Won Best Use of GenAI at Hackville 2025. Delivered an end-to-end solution helping students explore careers through AI-driven guidance combined with real-time job market data.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
