@@ -1,0 +1,138 @@
+/* Tablet */
+@media (max-width: 768px) {
+  .message-area {
+    padding: 100px 12px 66px;
+  }
+
+  .message-container {
+    max-width: 100%;
+  }
+
+  .bubble {
+    max-width: 80%;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    max-width: 90%;
+  }
+
+  .experience-cards {
+    max-width: 90%;
+  }
+
+  .skills-card {
+    max-width: 90%;
+  }
+
+  .contact-card {
+    max-width: 85%;
+  }
+
+  .header-left span {
+    display: none;
+  }
+
+  .modal-content {
+    padding: 24px 16px 48px;
+  }
+
+  .modal-hero {
+    height: 200px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header {
+    height: 76px;
+    padding: 6px 12px;
+  }
+
+  .header-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: var(--text-xs);
+  }
+
+  .header-name {
+    font-size: var(--text-xs);
+  }
+
+  .header-subtitle {
+    display: none;
+  }
+
+  .message-area {
+    padding: 88px 8px 62px;
+  }
+
+  .message-area::before {
+    top: 76px;
+  }
+
+  .bubble {
+    max-width: 88%;
+    font-size: 1rem;
+  }
+
+  .project-cards {
+    max-width: 92%;
+  }
+
+  .experience-cards {
+    max-width: 92%;
+  }
+
+  .skills-card {
+    max-width: 92%;
+  }
+
+  .contact-card {
+    max-width: 90%;
+  }
+
+  .project-card-thumb {
+    height: 130px;
+  }
+
+  .input-bar {
+    height: 48px;
+    padding: 6px 8px;
+  }
+
+  .input-field {
+    height: 32px;
+    font-size: var(--text-sm);
+  }
+
+  .input-bar-plus {
+    width: 28px;
+    height: 28px;
+  }
+
+  .input-send {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal-hero {
+    height: 160px;
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 12px 16px;
+  }
+
+  .bubble.mission {
+    font-size: var(--text-base);
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .message-container {
+    max-width: 720px;
+  }
+}
