@@ -1,0 +1,122 @@
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.6s var(--spring);
+}
+
+.reveal.from-right {
+  transform: translateX(30px);
+}
+
+.reveal.from-left {
+  transform: translateX(-30px);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger delays for grouped reveals */
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+.reveal.delay-4 { transition-delay: 0.4s; }
+.reveal.delay-5 { transition-delay: 0.5s; }
+.reveal.delay-6 { transition-delay: 0.6s; }
+.reveal.delay-7 { transition-delay: 0.7s; }
+
+/* Hero sequence (first load only) */
+.hero-animate .bubble,
+.hero-animate .contact-pills,
+.hero-animate .receipt {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.hero-animate .bubble.sent {
+  transform: translateX(30px);
+}
+
+.hero-animate .bubble.received {
+  transform: translateX(-30px);
+}
+
+.hero-animate .animate-in {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: opacity 0.4s ease, transform 0.5s var(--spring);
+}
+
+/* Skip hero animation for repeat visits */
+.hero-skip .bubble,
+.hero-skip .contact-pills,
+.hero-skip .receipt {
+  opacity: 1;
+  transform: none;
+}
+
+/* Typing indicator for hero sequence */
+.hero-typing {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-typing.show {
+  opacity: 1;
+}
+
+/* Card hover glow */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--bubble-radius);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(11, 147, 246, 0.3);
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* Pulse for typing dots alternative */
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Smooth expand for experience cards */
+.experience-expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.experience-card.expanded .experience-expand-content {
+  max-height: 500px;
+}
+
+/* Modal backdrop fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Subtle float for contact card */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.contact-card:hover {
+  animation: subtleFloat 3s ease-in-out infinite;
+}
