@@ -1,0 +1,167 @@
+/* Message Groups */
+.message-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--section-gap);
+}
+
+/* Timestamp */
+.timestamp {
+  text-align: center;
+  color: var(--timestamp);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  padding: 8px 0 4px;
+  margin: 8px 0;
+  transition: color var(--transition-color);
+}
+
+/* Base Bubble */
+.bubble {
+  max-width: 75%;
+  padding: var(--bubble-padding);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  position: relative;
+  word-wrap: break-word;
+  margin-bottom: var(--bubble-gap);
+}
+
+/* Sent Bubble (blue, right-aligned) */
+.bubble.sent {
+  align-self: flex-end;
+  background: var(--bubble-sent);
+  color: var(--text-on-blue);
+  border-radius: var(--bubble-radius) var(--bubble-radius) 4px var(--bubble-radius);
+}
+
+/* Received Bubble (gray, left-aligned) */
+.bubble.received {
+  align-self: flex-start;
+  background: var(--bubble-received);
+  color: var(--text-on-gray);
+  border-radius: var(--bubble-radius) var(--bubble-radius) var(--bubble-radius) 4px;
+  transition: background var(--transition-color), color var(--transition-color);
+}
+
+/* Consecutive bubble grouping */
+.bubble.sent.first {
+  border-radius: var(--bubble-radius) var(--bubble-radius) 4px var(--bubble-radius);
+}
+
+.bubble.sent.middle {
+  border-radius: var(--bubble-radius) 4px 4px var(--bubble-radius);
+}
+
+.bubble.sent.last {
+  border-radius: var(--bubble-radius) 4px var(--bubble-radius) var(--bubble-radius);
+}
+
+.bubble.received.first {
+  border-radius: var(--bubble-radius) var(--bubble-radius) var(--bubble-radius) 4px;
+}
+
+.bubble.received.middle {
+  border-radius: 4px var(--bubble-radius) var(--bubble-radius) 4px;
+}
+
+.bubble.received.last {
+  border-radius: 4px var(--bubble-radius) var(--bubble-radius) var(--bubble-radius);
+}
+
+/* Solo bubble keeps default radius */
+.bubble.solo.sent {
+  border-radius: var(--bubble-radius) var(--bubble-radius) 4px var(--bubble-radius);
+}
+
+.bubble.solo.received {
+  border-radius: var(--bubble-radius) var(--bubble-radius) var(--bubble-radius) 4px;
+}
+
+/* Delivery Receipt */
+.receipt {
+  text-align: left;
+  font-size: var(--text-xs);
+  color: var(--receipt);
+  padding: 3px 4px 0;
+  font-weight: var(--weight-regular);
+  margin-bottom: var(--group-gap);
+  transition: color var(--transition-color);
+}
+
+/* Contact Pills */
+.contact-pills {
+  display: flex;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 6px;
+  margin-bottom: var(--group-gap);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.contact-pill:hover {
+  background: rgba(11, 147, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+.contact-pill:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.contact-pill svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--bubble-received);
+  border-radius: var(--bubble-radius) var(--bubble-radius) var(--bubble-radius) 4px;
+  align-self: flex-start;
+  transition: background var(--transition-color);
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
