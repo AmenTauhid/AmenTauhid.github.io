@@ -80,6 +80,9 @@
     }, afterBubbles + 200);
 
     setTimeout(function () {
+      // Switch to hero-skip so transform is fully cleared (avoids mobile Safari flex bugs)
+      hero.classList.remove('hero-animate');
+      hero.classList.add('hero-skip');
       sessionStorage.setItem('heroPlayed', '1');
       callback();
     }, afterBubbles + 600);

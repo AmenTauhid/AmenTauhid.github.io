@@ -5,6 +5,7 @@
   height: 100dvh;
   max-width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Fixed Header */
@@ -115,6 +116,7 @@
 .message-area {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding: 104px 16px 120px;
   scroll-behavior: smooth;

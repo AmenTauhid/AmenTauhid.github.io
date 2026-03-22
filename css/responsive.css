@@ -128,6 +128,15 @@
   .bubble.mission {
     font-size: var(--text-base);
   }
+
+  /* Reduce hero animation X-translate to prevent overflow */
+  .hero-animate .bubble.sent {
+    transform: translateX(15px);
+  }
+
+  .hero-animate .bubble.received {
+    transform: translateX(-15px);
+  }
 }
 
 /* Large desktop */
