@@ -2,26 +2,58 @@
   'use strict';
 
   var TOPICS = {
-    projects:   { question: 'What are you working on?',  label: 'Projects' },
-    experience: { question: 'Where have you worked?',    label: 'Work Experience' },
-    skills:     { question: 'What tech do you use?',     label: 'Skills' },
-    about:      { question: 'Tell me your story.',       label: 'My Story' }
+    projects:   { question: 'What are you working on?',  label: 'Projects',        emoji: '💻' },
+    experience: { question: 'Where have you worked?',    label: 'Work Experience', emoji: '💼' },
+    skills:     { question: 'What tech do you use?',     label: 'Skills',          emoji: '🛠️' },
+    about:      { question: 'Tell me your story.',       label: 'My Story',        emoji: '📖' }
   };
 
   var state = {
     explored: [],
     animating: false,
-    minutes: 0,
     pendingSection: null,
-    pendingQuestion: null
+    pendingQuestion: null,
+    muted: true,
+    konamiBuffer: []
   };
 
-  var conversation, quickReplies, messageArea, inputField, sendBtn;
+  var KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+
+  var conversation, quickReplies, messageArea, inputField, sendBtn, headerEmoji, pinnedNav;
+  var sendSound, receiveSound;
+
+  // ========== UTILS ==========
+  function formatTime(date) {
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+  }
+
+  function getNow() {
+    return formatTime(new Date());
+  }
 
   // ========== THEME ==========
   function initTheme() {
-    if (localStorage.getItem('theme') === 'light') {
+    var saved = localStorage.getItem('theme');
+    if (saved) {
+      if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
       document.documentElement.setAttribute('data-theme', 'light');
+    }
+    // Listen for system changes (only if user hasn't manually set)
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+          if (e.matches) {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+        }
+      });
     }
   }
 
@@ -35,10 +67,40 @@
     }
   }
 
+  // ========== SOUNDS ==========
+  function initSounds() {
+    state.muted = localStorage.getItem('muted') !== 'false';
+    // Short base64-encoded beep sounds (tiny, no external files needed)
+    sendSound = new Audio('data:audio/wav;base64,UklGRl4AAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YToAAABkAMgA/AD/APgA4AC8AJAAYAAwAAAA4AC8AJAAaABAABgA8ADIAKAAgABgAEAAIAAIAPAA0ACwAJA=');
+    receiveSound = new Audio('data:audio/wav;base64,UklGRl4AAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YToAAAAwAGAAkAC8AOgA/AD/APwA6AC8AJAAYAAwAAAA8ADQALAA0ADwAAgAIABAAGAAeACQAKgAwADYAOg=');
+    sendSound.volume = 0.3;
+    receiveSound.volume = 0.3;
+  }
+
+  function playSound(sound) {
+    if (state.muted || !sound) return;
+    sound.currentTime = 0;
+    sound.play().catch(function () {});
+  }
+
+  function toggleMute() {
+    state.muted = !state.muted;
+    localStorage.setItem('muted', state.muted ? 'true' : 'false');
+    var muteBtn = document.querySelector('.mute-toggle');
+    if (muteBtn) {
+      muteBtn.querySelector('.icon-muted').style.display = state.muted ? 'block' : 'none';
+      muteBtn.querySelector('.icon-unmuted').style.display = state.muted ? 'none' : 'block';
+    }
+  }
+
   // ========== HERO ==========
   function initHero(callback) {
     var hero = document.getElementById('hero');
     if (!hero) return callback();
+
+    // Set hero timestamp to current time
+    var heroTs = hero.querySelector('.timestamp');
+    if (heroTs) heroTs.textContent = 'Today ' + getNow();
 
     var visited = sessionStorage.getItem('heroPlayed');
     if (visited) {
@@ -54,6 +116,7 @@
 
     setTimeout(function () {
       if (bubbles[0]) bubbles[0].classList.add('animate-in');
+      playSound(sendSound);
     }, 400);
 
     setTimeout(function () {
@@ -70,6 +133,10 @@
         setTimeout(function () { el.classList.add('animate-in'); }, delay);
       })(bubbles[i], sentStart + (i - 1) * 300);
     }
+
+    setTimeout(function () {
+      playSound(receiveSound);
+    }, sentStart);
 
     var afterBubbles = sentStart + (bubbles.length - 1) * 300 + 200;
 
@@ -89,17 +156,6 @@
     }, afterBubbles + 600);
   }
 
-  // ========== TIME ==========
-  function getTime() {
-    state.minutes += 2;
-    var h = 10;
-    var m = state.minutes;
-    while (m >= 60) { h++; m -= 60; }
-    var ampm = h >= 12 ? 'PM' : 'AM';
-    if (h > 12) h -= 12;
-    return h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
-  }
-
   // ========== SCROLL ==========
   function scrollToElement(el) {
     if (el) {
@@ -107,6 +163,50 @@
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
+  }
+
+  // ========== EMOJI STATUS ==========
+  function updateEmoji(sectionId) {
+    if (!headerEmoji) return;
+    var emoji = '👋';
+    if (sectionId && TOPICS[sectionId]) {
+      emoji = TOPICS[sectionId].emoji;
+    } else if (sectionId === 'contact') {
+      emoji = '🤝';
+    }
+    headerEmoji.classList.add('emoji-flip');
+    setTimeout(function () {
+      headerEmoji.textContent = emoji;
+      headerEmoji.classList.remove('emoji-flip');
+    }, 150);
+  }
+
+  // ========== PINNED NAV ==========
+  function initPinnedNav() {
+    pinnedNav = document.getElementById('pinned-nav');
+    if (!pinnedNav) return;
+    Object.keys(TOPICS).forEach(function (key) {
+      var pin = pinnedNav.querySelector('[data-pin="' + key + '"]');
+      if (pin) {
+        pin.addEventListener('click', function () {
+          if (state.explored.indexOf(key) !== -1) {
+            // Scroll to that section
+            var section = document.querySelector('[data-section-group="' + key + '"]');
+            if (section) scrollToElement(section);
+          } else if (!state.animating) {
+            stageMessage(key, TOPICS[key].question);
+          }
+        });
+      }
+    });
+  }
+
+  function updatePinnedNav() {
+    if (!pinnedNav) return;
+    state.explored.forEach(function (key) {
+      var pin = pinnedNav.querySelector('[data-pin="' + key + '"]');
+      if (pin) pin.classList.add('explored');
+    });
   }
 
   // ========== INPUT FIELD ==========
@@ -133,6 +233,7 @@
     var sectionId = state.pendingSection;
     var questionText = state.pendingQuestion;
     clearInput();
+    playSound(sendSound);
     handleReply(sectionId, questionText);
   }
 
@@ -179,25 +280,30 @@
     if (state.animating) return;
     state.animating = true;
     hideQuickReplies();
+    updateEmoji(sectionId);
 
     var group = document.createElement('div');
     group.className = 'message-group';
+    if (sectionId !== 'contact') {
+      group.setAttribute('data-section-group', sectionId);
+    }
 
     var ts = document.createElement('div');
     ts.className = 'timestamp';
-    ts.textContent = getTime();
+    ts.textContent = getNow();
     group.appendChild(ts);
 
     var q = document.createElement('div');
-    q.className = 'bubble sent solo chat-reveal';
+    q.className = 'bubble sent solo bubble-send-effect';
     q.textContent = questionText;
     group.appendChild(q);
 
     conversation.appendChild(group);
     scrollToElement(ts);
 
-    requestAnimationFrame(function () {
-      q.classList.add('chat-visible');
+    // Remove send effect class after animation
+    q.addEventListener('animationend', function () {
+      q.classList.remove('bubble-send-effect');
     });
 
     setTimeout(function () {
@@ -209,6 +315,7 @@
 
       setTimeout(function () {
         group.removeChild(typing);
+        playSound(receiveSound);
 
         var template = document.querySelector('[data-section="' + sectionId + '"]');
         if (template) {
@@ -224,14 +331,30 @@
           }, i * 120);
         });
 
+        // Bind project card clicks
         group.querySelectorAll('.project-card[data-modal]').forEach(function (card) {
           card.addEventListener('click', function () {
             openModal(card.getAttribute('data-modal'));
           });
         });
 
+        // Bind reactions on received bubbles
+        group.querySelectorAll('.bubble.received').forEach(function (bubble) {
+          initReaction(bubble);
+        });
+
         if (sectionId !== 'contact') {
           state.explored.push(sectionId);
+          updatePinnedNav();
+        }
+
+        // Update read receipt after content loads
+        var receipt = group.querySelector('.receipt');
+        if (receipt) {
+          setTimeout(function () {
+            receipt.classList.add('receipt-read');
+            receipt.textContent = 'Read ' + getNow();
+          }, reveals.length * 120 + 800);
         }
 
         setTimeout(function () {
@@ -245,6 +368,112 @@
 
       }, 1200);
     }, 600);
+  }
+
+  // ========== REACTIONS ==========
+  var REACTIONS = ['❤️', '👍', '👎', '😂', '‼️', '❓'];
+
+  function initReaction(bubble) {
+    bubble.classList.add('reactable');
+    bubble.addEventListener('click', function (e) {
+      // Don't trigger on links or buttons inside the bubble
+      if (e.target.closest('a, button, .project-card, .experience-card, .skills-card, .contact-card')) return;
+      toggleReactionBar(bubble);
+    });
+  }
+
+  function toggleReactionBar(bubble) {
+    // Close any open bars first
+    document.querySelectorAll('.reaction-bar.show').forEach(function (bar) {
+      bar.classList.remove('show');
+    });
+
+    var existing = bubble.querySelector('.reaction-bar');
+    if (existing) {
+      existing.classList.toggle('show');
+      return;
+    }
+
+    var bar = document.createElement('div');
+    bar.className = 'reaction-bar show';
+    REACTIONS.forEach(function (emoji) {
+      var btn = document.createElement('button');
+      btn.className = 'reaction-btn';
+      btn.textContent = emoji;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        addReaction(bubble, emoji);
+        bar.classList.remove('show');
+      });
+      bar.appendChild(btn);
+    });
+    bubble.appendChild(bar);
+  }
+
+  function addReaction(bubble, emoji) {
+    var badge = bubble.querySelector('.reaction-badge');
+    if (badge) {
+      if (badge.textContent === emoji) {
+        badge.remove();
+        return;
+      }
+      badge.textContent = emoji;
+    } else {
+      badge = document.createElement('span');
+      badge.className = 'reaction-badge';
+      badge.textContent = emoji;
+      bubble.appendChild(badge);
+    }
+    badge.classList.add('reaction-pop');
+    badge.addEventListener('animationend', function () {
+      badge.classList.remove('reaction-pop');
+    });
+  }
+
+  // ========== KONAMI CODE ==========
+  function checkKonami(key) {
+    state.konamiBuffer.push(key);
+    if (state.konamiBuffer.length > KONAMI.length) {
+      state.konamiBuffer.shift();
+    }
+    if (state.konamiBuffer.length === KONAMI.length &&
+        state.konamiBuffer.every(function (k, i) { return k === KONAMI[i]; })) {
+      triggerEasterEgg();
+      state.konamiBuffer = [];
+    }
+  }
+
+  function triggerEasterEgg() {
+    // Confetti
+    var container = document.createElement('div');
+    container.className = 'confetti-container';
+    for (var i = 0; i < 80; i++) {
+      var piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.animationDelay = Math.random() * 2 + 's';
+      piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+      piece.style.background = ['#0b93f6', '#30d158', '#ff375f', '#ffd60a', '#bf5af2', '#ff9f0a'][Math.floor(Math.random() * 6)];
+      container.appendChild(piece);
+    }
+    document.body.appendChild(container);
+    setTimeout(function () { container.remove(); }, 4000);
+
+    // Secret bubble
+    var group = document.createElement('div');
+    group.className = 'message-group';
+    var ts = document.createElement('div');
+    ts.className = 'timestamp';
+    ts.textContent = '🎉 Secret Unlocked';
+    group.appendChild(ts);
+    var bubble = document.createElement('div');
+    bubble.className = 'bubble received solo chat-reveal';
+    bubble.textContent = "You found the secret! Fun fact: I've written code in 7+ languages across 3 continents 🌍";
+    group.appendChild(bubble);
+    conversation.appendChild(group);
+    requestAnimationFrame(function () { bubble.classList.add('chat-visible'); });
+    scrollToElement(ts);
+    playSound(receiveSound);
   }
 
   // ========== RESTART ==========
@@ -261,7 +490,6 @@
     hideQuickReplies();
     clearInput();
     state.explored = [];
-    state.minutes = 0;
     sessionStorage.setItem('heroPlayed', '1');
     location.reload();
   }
@@ -298,7 +526,14 @@
   // ========== KEYBOARD ==========
   function initKeyboard() {
     document.addEventListener('keydown', function (e) {
+      // Konami
+      checkKonami(e.key);
+
       if (e.key === 'Escape') {
+        // Close reaction bars
+        document.querySelectorAll('.reaction-bar.show').forEach(function (bar) {
+          bar.classList.remove('show');
+        });
         document.querySelectorAll('.modal.open').forEach(function (modal) {
           var id = modal.id.replace('-modal', '');
           window.closeModal(id);
@@ -309,34 +544,47 @@
         sendMessage();
       }
     });
+
+    // Close reaction bars on outside click
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.reactable')) {
+        document.querySelectorAll('.reaction-bar.show').forEach(function (bar) {
+          bar.classList.remove('show');
+        });
+      }
+    });
   }
 
   // ========== INIT ==========
   function init() {
     initTheme();
+    initSounds();
 
     conversation = document.getElementById('conversation');
     quickReplies = document.getElementById('quick-replies');
     messageArea = document.querySelector('.message-area');
     inputField = document.querySelector('.input-field');
     sendBtn = document.querySelector('.input-send');
+    headerEmoji = document.querySelector('.header-emoji');
 
     var toggleBtn = document.querySelector('.theme-toggle');
     if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
 
-    // Send button click
+    var muteBtn = document.querySelector('.mute-toggle');
+    if (muteBtn) muteBtn.addEventListener('click', toggleMute);
+
     sendBtn.addEventListener('click', function (e) {
       e.preventDefault();
       sendMessage();
     });
 
-    // Modal overlay clicks
     document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
       overlay.addEventListener('click', function () {
         window.closeModal(overlay.id.replace('-overlay', ''));
       });
     });
 
+    initPinnedNav();
     initKeyboard();
 
     initHero(function () {
