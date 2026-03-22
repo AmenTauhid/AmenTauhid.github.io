@@ -32,17 +32,29 @@
         <span>Messages</span>
       </div>
       <div class="header-center">
-        <div class="header-avatar">AT</div>
+        <div class="header-avatar">AT<span class="header-emoji">👋</span></div>
         <div class="header-name">Ayman Tauhid</div>
         <div class="header-subtitle">a builder</div>
       </div>
       <div class="header-right">
+        <button class="mute-toggle" aria-label="Toggle sound">
+          <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          <svg class="icon-unmuted" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
         <button class="theme-toggle" aria-label="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </button>
       </div>
     </header>
+
+    <!-- Pinned Topic Navigation -->
+    <div class="pinned-nav" id="pinned-nav">
+      <button class="pin" data-pin="projects" aria-label="Projects">💻</button>
+      <button class="pin" data-pin="experience" aria-label="Experience">💼</button>
+      <button class="pin" data-pin="skills" aria-label="Skills">🛠️</button>
+      <button class="pin" data-pin="about" aria-label="About">📖</button>
+    </div>
 
     <!-- Scrollable Message Area -->
     <main class="message-area">
