@@ -1,7 +1,7 @@
 /* Tablet */
 @media (max-width: 768px) {
   .message-area {
-    padding: 100px 12px 116px;
+    padding: 144px 12px 116px;
   }
 
   .message-container {
@@ -64,11 +64,11 @@
   }
 
   .message-area {
-    padding: 88px 8px 110px;
+    padding: 130px 8px 110px;
   }
 
   .message-area::before {
-    top: 76px;
+    top: 118px;
   }
 
   .bubble {
@@ -127,6 +127,28 @@
 
   .bubble.mission {
     font-size: var(--text-base);
+  }
+
+  .pinned-nav {
+    top: 76px;
+    gap: 10px;
+    padding: 6px 12px;
+  }
+
+  .pin {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .reaction-bar {
+    top: -40px;
+  }
+
+  .reaction-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
   }
 
   /* Reduce hero animation X-translate to prevent overflow */

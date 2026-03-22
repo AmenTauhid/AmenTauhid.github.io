@@ -112,13 +112,95 @@
 [data-theme="light"] .theme-toggle .icon-sun { display: block; }
 [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
+/* Mute Toggle */
+.mute-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--theme-toggle-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-color);
+}
+
+.mute-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .mute-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.mute-toggle svg {
+  width: 16px;
+  height: 16px;
+  color: var(--bubble-sent);
+}
+
+/* Header Emoji */
+.header-emoji {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.header-avatar {
+  position: relative;
+}
+
+/* Pinned Navigation */
+.pinned-nav {
+  position: fixed;
+  top: 88px;
+  left: 0;
+  right: 0;
+  z-index: 49;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--header-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 0.5px solid var(--separator);
+  transition: background var(--transition-color);
+}
+
+.pin {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pin:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.pin.explored {
+  background: var(--bubble-sent);
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(11, 147, 246, 0.3);
+}
+
 /* Scrollable Message Area */
 .message-area {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 104px 16px 120px;
+  padding: 148px 16px 120px;
   scroll-behavior: smooth;
 }
 
@@ -142,7 +224,7 @@
 }
 
 .message-area::before {
-  top: 88px;
+  top: 140px;
   height: 30px;
   background: linear-gradient(to bottom, var(--bg-primary), transparent);
 }
