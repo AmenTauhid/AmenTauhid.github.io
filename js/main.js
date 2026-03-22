@@ -11,10 +11,12 @@
   var state = {
     explored: [],
     animating: false,
-    minutes: 0
+    minutes: 0,
+    pendingSection: null,
+    pendingQuestion: null
   };
 
-  var conversation, quickReplies, messageArea;
+  var conversation, quickReplies, messageArea, inputField, sendBtn;
 
   // ========== THEME ==========
   function initTheme() {
@@ -80,7 +82,6 @@
     }, afterBubbles + 200);
 
     setTimeout(function () {
-      // Switch to hero-skip so transform is fully cleared (avoids mobile Safari flex bugs)
       hero.classList.remove('hero-animate');
       hero.classList.add('hero-skip');
       sessionStorage.setItem('heroPlayed', '1');
@@ -108,6 +109,33 @@
     }
   }
 
+  // ========== INPUT FIELD ==========
+  function stageMessage(sectionId, questionText) {
+    state.pendingSection = sectionId;
+    state.pendingQuestion = questionText;
+    inputField.textContent = questionText;
+    inputField.classList.add('has-text');
+    sendBtn.disabled = false;
+    sendBtn.classList.add('active');
+  }
+
+  function clearInput() {
+    state.pendingSection = null;
+    state.pendingQuestion = null;
+    inputField.textContent = 'Message Ayman...';
+    inputField.classList.remove('has-text');
+    sendBtn.disabled = true;
+    sendBtn.classList.remove('active');
+  }
+
+  function sendMessage() {
+    if (!state.pendingSection || state.animating) return;
+    var sectionId = state.pendingSection;
+    var questionText = state.pendingQuestion;
+    clearInput();
+    handleReply(sectionId, questionText);
+  }
+
   // ========== QUICK REPLIES ==========
   function renderQuickReplies() {
     quickReplies.innerHTML = '';
@@ -116,9 +144,8 @@
     });
 
     if (remaining.length === 0) {
-      // All explored — show connect option
       var btn = createQuickBtn('How do I connect?', function () {
-        handleReply('contact', 'How do I connect?');
+        stageMessage('contact', 'How do I connect?');
       });
       quickReplies.appendChild(btn);
       quickReplies.classList.add('visible');
@@ -127,7 +154,7 @@
 
     remaining.forEach(function (key) {
       var btn = createQuickBtn(TOPICS[key].label, function () {
-        handleReply(key, TOPICS[key].question);
+        stageMessage(key, TOPICS[key].question);
       });
       quickReplies.appendChild(btn);
     });
@@ -156,13 +183,11 @@
     var group = document.createElement('div');
     group.className = 'message-group';
 
-    // Timestamp
     var ts = document.createElement('div');
     ts.className = 'timestamp';
     ts.textContent = getTime();
     group.appendChild(ts);
 
-    // Blue question bubble
     var q = document.createElement('div');
     q.className = 'bubble sent solo chat-reveal';
     q.textContent = questionText;
@@ -171,12 +196,10 @@
     conversation.appendChild(group);
     scrollToElement(ts);
 
-    // Animate question in
     requestAnimationFrame(function () {
       q.classList.add('chat-visible');
     });
 
-    // Typing indicator after short delay
     setTimeout(function () {
       var typing = document.createElement('div');
       typing.className = 'typing-indicator';
@@ -184,19 +207,16 @@
       group.appendChild(typing);
       scrollToElement(typing);
 
-      // Reveal section content
       setTimeout(function () {
         group.removeChild(typing);
 
         var template = document.querySelector('[data-section="' + sectionId + '"]');
         if (template) {
-          // Move children from template into the conversation group
           while (template.firstChild) {
             group.appendChild(template.firstChild);
           }
         }
 
-        // Stagger-animate the chat-reveal elements
         var reveals = group.querySelectorAll('.chat-reveal');
         reveals.forEach(function (el, i) {
           setTimeout(function () {
@@ -204,7 +224,6 @@
           }, i * 120);
         });
 
-        // Re-bind project card clicks
         group.querySelectorAll('.project-card[data-modal]').forEach(function (card) {
           card.addEventListener('click', function () {
             openModal(card.getAttribute('data-modal'));
@@ -240,18 +259,7 @@
 
   function resetConversation() {
     hideQuickReplies();
-
-    // Remove all message groups except hero
-    var groups = conversation.querySelectorAll('.message-group');
-    groups.forEach(function (g) {
-      if (g.id !== 'hero') {
-        conversation.removeChild(g);
-      }
-    });
-
-    // Rebuild hidden templates from the used sections
-    // (they were moved into conversation, need to restore them)
-    // Simplest: reload the page
+    clearInput();
     state.explored = [];
     state.minutes = 0;
     sessionStorage.setItem('heroPlayed', '1');
@@ -296,6 +304,10 @@
           window.closeModal(id);
         });
       }
+      if (e.key === 'Enter' && state.pendingSection) {
+        e.preventDefault();
+        sendMessage();
+      }
     });
   }
 
@@ -306,9 +318,17 @@
     conversation = document.getElementById('conversation');
     quickReplies = document.getElementById('quick-replies');
     messageArea = document.querySelector('.message-area');
+    inputField = document.querySelector('.input-field');
+    sendBtn = document.querySelector('.input-send');
 
     var toggleBtn = document.querySelector('.theme-toggle');
     if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+
+    // Send button click
+    sendBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      sendMessage();
+    });
 
     // Modal overlay clicks
     document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
@@ -319,7 +339,6 @@
 
     initKeyboard();
 
-    // Start hero, then show quick replies
     initHero(function () {
       renderQuickReplies();
     });

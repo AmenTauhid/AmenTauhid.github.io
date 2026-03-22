@@ -201,19 +201,32 @@
   color: var(--text-tertiary);
   display: flex;
   align-items: center;
-  transition: background var(--transition-color), border-color var(--transition-color);
+  transition: background var(--transition-color), border-color var(--transition-color), color 0.2s ease;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.input-field.has-text {
+  color: var(--text-primary);
 }
 
 .input-send {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--bubble-sent);
+  background: var(--text-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, background 0.2s ease;
+  opacity: 0.5;
+}
+
+.input-send.active {
+  background: var(--bubble-sent);
+  opacity: 1;
 }
 
 .input-send:hover {
