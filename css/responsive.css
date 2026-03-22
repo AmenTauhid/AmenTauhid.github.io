@@ -60,7 +60,7 @@
   }
 
   .header-subtitle {
-    display: none;
+    display: block;
   }
 
   .message-area {
