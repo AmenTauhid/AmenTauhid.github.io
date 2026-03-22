@@ -100,10 +100,10 @@
   }
 
   // ========== SCROLL ==========
-  function scrollToBottom() {
-    if (messageArea) {
+  function scrollToElement(el) {
+    if (el) {
       requestAnimationFrame(function () {
-        messageArea.scrollTo({ top: messageArea.scrollHeight, behavior: 'smooth' });
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
   }
@@ -169,7 +169,7 @@
     group.appendChild(q);
 
     conversation.appendChild(group);
-    scrollToBottom();
+    scrollToElement(ts);
 
     // Animate question in
     requestAnimationFrame(function () {
@@ -182,7 +182,7 @@
       typing.className = 'typing-indicator';
       typing.innerHTML = '<span></span><span></span><span></span>';
       group.appendChild(typing);
-      scrollToBottom();
+      scrollToElement(typing);
 
       // Reveal section content
       setTimeout(function () {
@@ -203,10 +203,6 @@
             el.classList.add('chat-visible');
           }, i * 120);
         });
-
-        scrollToBottom();
-        // Keep scrolling as elements animate in
-        setTimeout(function () { scrollToBottom(); }, reveals.length * 120 + 100);
 
         // Re-bind project card clicks
         group.querySelectorAll('.project-card[data-modal]').forEach(function (card) {
