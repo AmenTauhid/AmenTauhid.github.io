@@ -103,15 +103,15 @@
 
     /* Resume container */
     .resume {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 48px 60px;
+      padding: 48px 60px 80px;
     }
 
     /* Header card */
     .resume-header {
       text-align: center;
-      padding: 32px 20px;
+      padding: 40px 28px;
       background: var(--bg2);
       border-radius: 20px;
       margin-bottom: 28px;
@@ -130,29 +130,29 @@
       opacity: 0.15;
     }
     .resume-avatar {
-      width: 72px;
-      height: 72px;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
       background: var(--blue);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 700;
       color: #fff;
-      margin: 0 auto 12px;
+      margin: 0 auto 14px;
       position: relative;
       z-index: 1;
     }
     .resume-name {
-      font-size: 32px;
+      font-size: 38px;
       font-weight: 700;
       margin-bottom: 6px;
       position: relative;
     }
     .resume-title {
       color: var(--text2);
-      font-size: 17px;
+      font-size: 19px;
       margin-bottom: 16px;
     }
     .resume-links {
@@ -165,11 +165,11 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: 14px;
       background: var(--tag-bg);
       color: var(--blue);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       transition: background 0.2s;
     }
@@ -178,10 +178,10 @@
 
     /* Section */
     .section {
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
     .section-title {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -193,10 +193,10 @@
 
     /* Skills */
     .skills-row {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
     .skills-label {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--text2);
       margin-bottom: 6px;
@@ -209,20 +209,20 @@
       gap: 6px;
     }
     .tag {
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 10px;
       background: var(--tag-bg);
       color: var(--tag-text);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
     }
 
     /* Experience entry */
     .entry {
-      padding: 16px;
+      padding: 20px;
       background: var(--bg2);
       border-radius: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       border: 1px solid var(--border);
       transition: background 0.2s, border-color 0.2s;
     }
@@ -237,11 +237,11 @@
       margin-bottom: 6px;
     }
     .entry-role {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
     }
     .entry-company {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text2);
     }
     .entry-right {
@@ -262,10 +262,10 @@
       margin-top: 8px;
     }
     .entry-bullets li {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text);
-      line-height: 1.5;
-      padding: 3px 0 3px 14px;
+      line-height: 1.6;
+      padding: 4px 0 4px 16px;
       position: relative;
       transition: color 0.2s;
     }
@@ -283,32 +283,52 @@
       margin-top: 10px;
     }
 
-    /* Project entry */
+    /* Project stack */
+    .project-stack {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
     .project-entry {
-      padding: 16px;
+      padding: 20px;
       background: var(--bg2);
       border-radius: 16px;
-      margin-bottom: 10px;
+      margin-bottom: -6px;
       border: 1px solid var(--border);
-      transition: border-color 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s, margin-bottom 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .project-entry:nth-child(odd) {
+      transform: rotate(-0.3deg);
+    }
+    .project-entry:nth-child(even) {
+      transform: rotate(0.3deg);
     }
     .project-entry:hover {
-      border-color: rgba(11,147,246,0.3);
+      border-color: rgba(11,147,246,0.4);
+      transform: rotate(0deg) translateY(-4px) scale(1.01);
+      box-shadow: 0 8px 30px rgba(11,147,246,0.12);
+      z-index: 10;
+      margin-bottom: 6px;
+    }
+    .project-entry:last-child {
+      margin-bottom: 0;
     }
     .project-badge {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 8px;
       background: rgba(11,147,246,0.15);
       color: var(--blue);
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 600;
       margin-bottom: 6px;
     }
     .project-name {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     /* Education */
@@ -319,11 +339,11 @@
       gap: 12px;
     }
     .edu-school {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
     }
     .edu-degree {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text2);
     }
 
@@ -360,18 +380,25 @@
 
     /* Mobile */
     @media (max-width: 480px) {
-      .resume { padding: 20px 12px 40px; }
-      .resume-header { padding: 24px 16px; }
-      .resume-name { font-size: 24px; }
-      .resume-title { font-size: 15px; }
-      .entry { padding: 12px; }
+      .resume { padding: 20px 14px 40px; }
+      .resume-header { padding: 28px 16px; }
+      .resume-name { font-size: 26px; }
+      .resume-title { font-size: 16px; }
+      .entry { padding: 14px; }
       .entry-top { flex-direction: column; gap: 2px; }
       .entry-right { text-align: left; }
-      .entry-role { font-size: 16px; }
+      .entry-role { font-size: 17px; }
       .entry-company { font-size: 14px; }
-      .entry-bullets li { font-size: 14px; }
-      .project-name { font-size: 16px; }
-      .tag { font-size: 12px; padding: 4px 10px; }
+      .entry-bullets li { font-size: 15px; }
+      .project-entry { padding: 14px; margin-bottom: 8px; }
+      .project-entry:nth-child(odd),
+      .project-entry:nth-child(even) { transform: none; }
+      .project-entry:hover { transform: none; margin-bottom: 8px; }
+      .project-name { font-size: 17px; }
+      .tag { font-size: 13px; padding: 4px 10px; }
+      .edu-school { font-size: 17px; }
+      .edu-entry { flex-direction: column; gap: 2px; }
+      .entry-right { text-align: left; }
     }
   </style>
 </head>
@@ -574,6 +601,7 @@
     <!-- Projects -->
     <div class="section">
       <div class="section-title">Projects</div>
+      <div class="project-stack">
 
       <div class="project-entry">
         <span class="project-badge">Winner: Best Use of GenAI, Hackville 2025</span>
@@ -672,6 +700,7 @@
         <ul class="entry-bullets">
           <li>Cross-platform campus navigation app with searchable map and step-by-step directions for Sheridan College's Trafalgar Campus</li>
         </ul>
+      </div>
       </div>
     </div>
 
