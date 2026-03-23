@@ -112,6 +112,33 @@
 [data-theme="light"] .theme-toggle .icon-sun { display: block; }
 [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
+/* Header Icon Buttons (LinkedIn, Resume) */
+.header-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--theme-toggle-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-color), transform 0.15s ease;
+}
+
+.header-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+[data-theme="light"] .header-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.header-icon-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--bubble-sent);
+}
+
 /* Mute Toggle */
 .mute-toggle {
   width: 34px;
