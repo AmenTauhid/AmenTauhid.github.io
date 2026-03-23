@@ -103,9 +103,9 @@
 
     /* Resume container */
     .resume {
-      max-width: 720px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 32px 24px 60px;
+      padding: 40px 48px 60px;
     }
 
     /* Header card */
@@ -145,14 +145,14 @@
       z-index: 1;
     }
     .resume-name {
-      font-size: 26px;
+      font-size: 32px;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       position: relative;
     }
     .resume-title {
       color: var(--text2);
-      font-size: 15px;
+      font-size: 17px;
       margin-bottom: 16px;
     }
     .resume-links {
@@ -164,12 +164,12 @@
     .resume-link {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 5px 12px;
+      gap: 6px;
+      padding: 6px 14px;
       border-radius: 14px;
       background: var(--tag-bg);
       color: var(--blue);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
       transition: background 0.2s;
     }
@@ -181,7 +181,7 @@
       margin-bottom: 28px;
     }
     .section-title {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -196,7 +196,7 @@
       margin-bottom: 10px;
     }
     .skills-label {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--text2);
       margin-bottom: 6px;
@@ -209,11 +209,11 @@
       gap: 6px;
     }
     .tag {
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 10px;
       background: var(--tag-bg);
       color: var(--tag-text);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
     }
 
@@ -237,11 +237,11 @@
       margin-bottom: 6px;
     }
     .entry-role {
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 600;
     }
     .entry-company {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--text2);
     }
     .entry-right {
@@ -249,11 +249,11 @@
       flex-shrink: 0;
     }
     .entry-location {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--text2);
     }
     .entry-date {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--text3);
     }
     .entry-bullets {
@@ -262,7 +262,7 @@
       margin-top: 8px;
     }
     .entry-bullets li {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--text);
       line-height: 1.5;
       padding: 3px 0 3px 14px;
@@ -306,7 +306,7 @@
       margin-bottom: 6px;
     }
     .project-name {
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 600;
       margin-bottom: 2px;
     }
@@ -319,11 +319,11 @@
       gap: 12px;
     }
     .edu-school {
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 600;
     }
     .edu-degree {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--text2);
     }
 
@@ -353,14 +353,25 @@
       .tag { background: #f0f0f0; color: #333; }
     }
 
+    /* Tablet */
+    @media (max-width: 768px) {
+      .resume { padding: 28px 20px 48px; }
+    }
+
     /* Mobile */
     @media (max-width: 480px) {
       .resume { padding: 20px 12px 40px; }
       .resume-header { padding: 24px 16px; }
-      .resume-name { font-size: 22px; }
+      .resume-name { font-size: 24px; }
+      .resume-title { font-size: 15px; }
       .entry { padding: 12px; }
       .entry-top { flex-direction: column; gap: 2px; }
       .entry-right { text-align: left; }
+      .entry-role { font-size: 16px; }
+      .entry-company { font-size: 14px; }
+      .entry-bullets li { font-size: 14px; }
+      .project-name { font-size: 16px; }
+      .tag { font-size: 12px; padding: 4px 10px; }
     }
   </style>
 </head>
@@ -566,7 +577,7 @@
 
       <div class="project-entry">
         <span class="project-badge">Winner: Best Use of GenAI, Hackville 2025</span>
-        <div class="project-name">NextHorizon – Agentic AI Career Guidance App</div>
+        <div class="project-name"><a href="https://github.com/AmenTauhid/NextHorizon-App">NextHorizon</a> – Agentic AI Career Guidance App</div>
         <div class="tags" style="margin: 8px 0">
           <span class="tag">Python</span>
           <span class="tag">FastAPI</span>
@@ -578,6 +589,88 @@
         <ul class="entry-bullets">
           <li>Designed and deployed an agentic AI backend integrating Google Gemini API via FastAPI, implementing structured prompt engineering, session-based conversation history, and Pydantic schema validation</li>
           <li>Containerized the full inference service with Docker, integrated OAuth 2.0 and Google Translate API for 5-language support</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <span class="project-badge">Full-Stack Platform</span>
+        <div class="project-name"><a href="https://github.com/HighwayHackers">Hauler App</a> – Freight Logistics Ecosystem</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">Swift</span>
+          <span class="tag">SwiftUI</span>
+          <span class="tag">React</span>
+          <span class="tag">Azure SQL</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Architected cross-platform freight management suite with React web portal, SwiftUI mobile app, and ASP.NET Core REST API on Azure</li>
+          <li>Built load lifecycle and bidding system with JWT auth, iOS Keychain storage, and role-based access control</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <div class="project-name"><a href="https://github.com/AmenTauhid/Forkable">Forkable</a> – Version Control for Recipes</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">Swift</span>
+          <span class="tag">SwiftUI</span>
+          <span class="tag">iOS 17+</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>GitHub-inspired iOS app for cooks to fork, branch, and merge recipe tweaks with visual diffs and baker's percentage recalculation</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <div class="project-name"><a href="https://github.com/AmenTauhid/TrackThatStreet">TrackThatStreet</a> – Real-Time TTC Streetcar Tracker</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">Swift</span>
+          <span class="tag">SwiftUI</span>
+          <span class="tag">MapKit</span>
+          <span class="tag">MVVM</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Live tracking of all 9 TTC streetcar routes with interactive map, arrival predictions, service status alerts, and offline caching</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <div class="project-name"><a href="https://github.com/AmenTauhid/2026-to-2027-internship-interview-assignment-aymantauhid">Gov Canada Contracts</a> – Procurement Data Analysis</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">Python</span>
+          <span class="tag">DuckDB</span>
+          <span class="tag">Polars</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Plotly</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Analyzed 1.26M government contracts, uncovering Q4 spending surges and amendment growth trends with an interactive Streamlit dashboard</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <div class="project-name"><a href="https://github.com/AmenTauhid/MisoPeriod">MisoPeriod</a> – Period Tracking App</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">Swift</span>
+          <span class="tag">SwiftUI</span>
+          <span class="tag">Core ML</span>
+          <span class="tag">Core Data</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>iOS period tracker with ML-powered cycle predictions, calendar visualization, health insights, and local Core Data persistence</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <div class="project-name"><a href="https://github.com/AmenTauhid/sheridan_compass">Sheridan Compass</a> – Campus Navigation App</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">Dart</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">Kotlin</span>
+          <span class="tag">Google Maps</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Cross-platform campus navigation app with searchable map and step-by-step directions for Sheridan College's Trafalgar Campus</li>
         </ul>
       </div>
     </div>
