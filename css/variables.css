@@ -20,8 +20,8 @@
   --green-accent: #30d158;
   --card-bg: #1c1c1e;
   --card-border: rgba(255, 255, 255, 0.08);
-  --tag-bg: rgba(255, 255, 255, 0.1);
-  --tag-text: rgba(255, 255, 255, 0.7);
+  --tag-bg: rgba(255, 255, 255, 0.15);
+  --tag-text: rgba(255, 255, 255, 0.85);
   --overlay-bg: rgba(0, 0, 0, 0.6);
   --modal-bg: #000000;
   --experience-bg: rgba(11, 147, 246, 0.1);
@@ -75,8 +75,8 @@
   --input-border: #c7c7cc;
   --card-bg: #f2f2f7;
   --card-border: rgba(0, 0, 0, 0.06);
-  --tag-bg: rgba(0, 0, 0, 0.06);
-  --tag-text: rgba(0, 0, 0, 0.5);
+  --tag-bg: rgba(0, 0, 0, 0.08);
+  --tag-text: rgba(0, 0, 0, 0.7);
   --overlay-bg: rgba(0, 0, 0, 0.4);
   --modal-bg: #ffffff;
   --experience-bg: rgba(11, 147, 246, 0.06);
