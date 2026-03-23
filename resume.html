@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayman Tauhid | Resume</title>
+  <meta name="description" content="Ayman Tauhid's resume — AI/ML, Full-Stack, and Mobile Developer.">
+  <meta name="theme-color" content="#000000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --bg2: #1c1c1e;
+      --bg3: #2c2c2e;
+      --blue: #0b93f6;
+      --text: #fff;
+      --text2: #8e8e93;
+      --text3: #636366;
+      --border: rgba(84,84,88,0.35);
+      --tag-bg: rgba(255,255,255,0.12);
+      --tag-text: rgba(255,255,255,0.8);
+      --font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    }
+    [data-theme="light"] {
+      --bg: #fff;
+      --bg2: #f2f2f7;
+      --bg3: #e5e5ea;
+      --text: #000;
+      --text2: #8e8e93;
+      --text3: #aeaeb2;
+      --border: rgba(60,60,67,0.29);
+      --tag-bg: rgba(0,0,0,0.06);
+      --tag-text: rgba(0,0,0,0.65);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      transition: background 0.2s, color 0.2s;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 0.5px solid var(--border);
+      transition: background 0.2s;
+    }
+    [data-theme="light"] .topbar {
+      background: rgba(255,255,255,0.72);
+    }
+    .topbar-back {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--blue);
+      font-size: 15px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--font);
+    }
+    .topbar-back svg { width: 20px; height: 20px; }
+    .topbar-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .topbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .topbar-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      color: var(--blue);
+    }
+    [data-theme="light"] .topbar-btn { background: rgba(0,0,0,0.06); }
+    .topbar-btn:hover { transform: scale(1.1); }
+    .topbar-btn svg { width: 16px; height: 16px; }
+
+    /* Resume container */
+    .resume {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+
+    /* Header card */
+    .resume-header {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--bg2);
+      border-radius: 20px;
+      margin-bottom: 28px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .resume-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(135deg, var(--blue), #5856d6);
+      opacity: 0.15;
+    }
+    .resume-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .resume-name {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .resume-title {
+      color: var(--text2);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .resume-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 14px;
+      background: var(--tag-bg);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .resume-link:hover { background: rgba(11,147,246,0.15); text-decoration: none; }
+    .resume-link svg { width: 12px; height: 12px; }
+
+    /* Section */
+    .section {
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--blue);
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Skills */
+    .skills-row {
+      margin-bottom: 10px;
+    }
+    .skills-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      padding: 4px 10px;
+      border-radius: 10px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Experience entry */
+    .entry {
+      padding: 16px;
+      background: var(--bg2);
+      border-radius: 16px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .entry:hover {
+      border-color: rgba(11,147,246,0.3);
+    }
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .entry-role {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .entry-company {
+      font-size: 13px;
+      color: var(--text2);
+    }
+    .entry-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .entry-location {
+      font-size: 12px;
+      color: var(--text2);
+    }
+    .entry-date {
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .entry-bullets {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+    .entry-bullets li {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 3px 0 3px 14px;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .entry-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .entry-tags {
+      margin-top: 10px;
+    }
+
+    /* Project entry */
+    .project-entry {
+      padding: 16px;
+      background: var(--bg2);
+      border-radius: 16px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .project-entry:hover {
+      border-color: rgba(11,147,246,0.3);
+    }
+    .project-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: rgba(11,147,246,0.15);
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .project-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* Education */
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .edu-school {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .edu-degree {
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    /* Fun footer */
+    .resume-footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--text3);
+      font-size: 13px;
+    }
+    .resume-footer .easter-egg {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+    .resume-footer .easter-egg:hover {
+      opacity: 1;
+    }
+
+    /* Print */
+    @media print {
+      .topbar { display: none; }
+      body { background: #fff; color: #000; }
+      .resume-header::before { display: none; }
+      .entry, .project-entry, .resume-header { border: 1px solid #ddd; background: #fff; }
+      .tag { background: #f0f0f0; color: #333; }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .resume { padding: 20px 12px 40px; }
+      .resume-header { padding: 24px 16px; }
+      .resume-name { font-size: 22px; }
+      .entry { padding: 12px; }
+      .entry-top { flex-direction: column; gap: 2px; }
+      .entry-right { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <nav class="topbar">
+    <a href="index.html" class="topbar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Chat
+    </a>
+    <span class="topbar-title">Resume</span>
+    <div class="topbar-actions">
+      <button class="topbar-btn" onclick="window.print()" aria-label="Print">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      </button>
+      <button class="topbar-btn" id="theme-btn" aria-label="Toggle theme">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg id="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="resume">
+
+    <!-- Header Card -->
+    <div class="resume-header">
+      <div class="resume-avatar">AT</div>
+      <div class="resume-name">Ayman Tauhid</div>
+      <div class="resume-title">AI/ML & Full-Stack Developer | a builder</div>
+      <div class="resume-links">
+        <a href="mailto:aymantauhid2@gmail.com" class="resume-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Email
+        </a>
+        <a href="https://www.linkedin.com/in/aymantauhid" target="_blank" class="resume-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/AmenTauhid" target="_blank" class="resume-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="index.html" class="resume-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          Portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-row">
+        <div class="skills-label">AI & ML</div>
+        <div class="tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">GenAI</span>
+          <span class="tag">RAG</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Agent Orchestration</span>
+          <span class="tag">OpenCV</span>
+        </div>
+      </div>
+      <div class="skills-row">
+        <div class="skills-label">Languages & Frameworks</div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Flask</span>
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">gRPC</span>
+        </div>
+      </div>
+      <div class="skills-row">
+        <div class="skills-label">Data & Cloud</div>
+        <div class="tags">
+          <span class="tag">AWS Lambda</span>
+          <span class="tag">AWS S3</span>
+          <span class="tag">Azure</span>
+          <span class="tag">Docker</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">ETL Pipelines</span>
+          <span class="tag">GitHub Actions CI/CD</span>
+        </div>
+      </div>
+      <div class="skills-row">
+        <div class="skills-label">Tools</div>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Postman</span>
+          <span class="tag">Agile/Scrum</span>
+          <span class="tag">Jest</span>
+          <span class="tag">React Testing Library</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div>
+            <div class="entry-role">AI Application Developer</div>
+            <div class="entry-company">Centre for Applied AI, Sheridan College – UHN Spatial Navigation Research</div>
+          </div>
+          <div class="entry-right">
+            <div class="entry-location">Oakville, ON</div>
+            <div class="entry-date">Sep 2025 – Dec 2025</div>
+          </div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Engineered scalable data export pipelines using SheetJS for multi-phase longitudinal intervention datasets (MST, EMQ, IPAQ), enabling batch clinical data analysis across 17+ weeks of patient cognitive training</li>
+          <li>Architected RESTful API endpoints with batch data aggregation and memoized caching, reducing multi-patient dashboard load times by 40%</li>
+          <li>Implemented session-based JWT authentication and role-based access control for AI-powered endpoints serving sensitive medical data</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div>
+            <div class="entry-role">Software Developer Co-op</div>
+            <div class="entry-company">Geotab</div>
+          </div>
+          <div class="entry-right">
+            <div class="entry-location">Oakville, ON</div>
+            <div class="entry-date">Jan 2025 – Aug 2025</div>
+          </div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Developed a native module for iOS (Swift) and Android (Kotlin), exposing real-time telemetry data via a JavaScript bridge layer to support data-driven fleet analytics at enterprise scale</li>
+          <li>Engineered crash event logging pipelines to BigQuery, capturing device metrics to enable data-driven root cause analysis for background process terminations across thousands of clients</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div>
+            <div class="entry-role">AI Software Developer Co-op</div>
+            <div class="entry-company">Oakville Centre for Vision (OCV)</div>
+          </div>
+          <div class="entry-right">
+            <div class="entry-location">Oakville, ON</div>
+            <div class="entry-date">Apr 2024 – Aug 2024</div>
+          </div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Developed deep learning models using Python and OpenCV for real-time clinical eye-tracking analysis, achieving 85% tracking accuracy and serving model inference through Flask REST API microservices</li>
+          <li>Automated ETL data pipelines via GitHub Actions CI/CD, reducing manual processing overhead by 50%</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div>
+            <div class="entry-role">ML Developer Intern</div>
+            <div class="entry-company">Accolite India</div>
+          </div>
+          <div class="entry-right">
+            <div class="entry-location">Gurugram, India</div>
+            <div class="entry-date">May 2023 – Aug 2023</div>
+          </div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Built and trained 3 PyTorch-based OCR deep learning models, improving document extraction accuracy by 78% through iterative architecture optimization</li>
+          <li>Deployed scalable ML inference pipelines on AWS Lambda, doubling processing throughput by engineering multi-stage pipelines integrating CNN feature extraction</li>
+          <li>Benchmarked multiple ML architectures for enterprise-level scalability, delivering data visualization reports and predictive model analyses</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div>
+            <div class="entry-role">Machine Learning Research Assistant</div>
+            <div class="entry-company">Centre for Applied AI, Sheridan College – TELUS Partnership</div>
+          </div>
+          <div class="entry-right">
+            <div class="entry-location">Oakville, ON</div>
+            <div class="entry-date">Sep 2022 – Apr 2023</div>
+          </div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Designed two novel hybrid ML models (Asymmetric/Symmetric Line Shifting) integrating SVM, Random Forest, and KNN classifiers, achieving 76% reduction in RMSE and 273% improvement in R2</li>
+          <li>Architected a multi-stage ML classification pipeline with probabilistic centroid calculations to refine Reference Point predictions</li>
+          <li>Authored a peer-reviewed paper published at ACM MSWIM '23, contributing novel probabilistic ML approaches to Bluetooth-based indoor localization</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="project-entry">
+        <span class="project-badge">Winner: Best Use of GenAI, Hackville 2025</span>
+        <div class="project-name">NextHorizon – Agentic AI Career Guidance App</div>
+        <div class="tags" style="margin: 8px 0">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Gemini 1.5 Flash</span>
+          <span class="tag">Docker</span>
+          <span class="tag">OAuth 2.0</span>
+          <span class="tag">Prompt Engineering</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Designed and deployed an agentic AI backend integrating Google Gemini API via FastAPI, implementing structured prompt engineering, session-based conversation history, and Pydantic schema validation</li>
+          <li>Containerized the full inference service with Docker, integrated OAuth 2.0 and Google Translate API for 5-language support</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="entry">
+        <div class="edu-entry">
+          <div>
+            <div class="edu-school">Sheridan College</div>
+            <div class="edu-degree">Honours Bachelor of Computer Science, Mobile Computing | GPA: 3.6</div>
+          </div>
+          <div class="entry-right">
+            <div class="entry-location">Oakville, ON</div>
+            <div class="entry-date">Sep 2021 – Dec 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="resume-footer">
+      Built with intention, not a template.
+      <div class="easter-egg">psst... try the Konami code on the <a href="index.html">main site</a></div>
+    </div>
+  </div>
+
+  <script>
+    // Theme sync with main site
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+      updateIcons();
+
+      document.getElementById('theme-btn').addEventListener('click', function() {
+        if (document.documentElement.getAttribute('data-theme') === 'light') {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+        updateIcons();
+      });
+
+      function updateIcons() {
+        var light = document.documentElement.getAttribute('data-theme') === 'light';
+        document.getElementById('icon-sun').style.display = light ? 'block' : 'none';
+        document.getElementById('icon-moon').style.display = light ? 'none' : 'block';
+      }
+    })();
+  </script>
+</body>
+</html>
