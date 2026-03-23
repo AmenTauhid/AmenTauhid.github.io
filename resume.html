@@ -283,55 +283,23 @@
       margin-top: 10px;
     }
 
-    /* Project deck stack */
-    .project-stack {
-      position: relative;
-      height: 320px;
-      margin-bottom: 16px;
+    /* Project grid — 2 per row */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
     .project-entry {
-      padding: 24px;
+      padding: 22px;
       background: var(--bg2);
       border-radius: 16px;
       border: 1px solid var(--border);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      cursor: pointer;
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  opacity 0.4s ease, box-shadow 0.3s ease;
-      user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s;
     }
     .project-entry:hover {
-      box-shadow: 0 8px 30px rgba(11,147,246,0.15);
-    }
-    /* Cards behind: each one peeks slightly below and is smaller */
-    .project-entry[data-pos="0"] { z-index: 7; transform: translateY(0) scale(1); opacity: 1; }
-    .project-entry[data-pos="1"] { z-index: 6; transform: translateY(10px) scale(0.97); opacity: 0.7; }
-    .project-entry[data-pos="2"] { z-index: 5; transform: translateY(20px) scale(0.94); opacity: 0.5; }
-    .project-entry[data-pos="3"] { z-index: 4; transform: translateY(28px) scale(0.91); opacity: 0.35; }
-    .project-entry[data-pos="4"] { z-index: 3; transform: translateY(34px) scale(0.88); opacity: 0.2; }
-    .project-entry[data-pos="5"] { z-index: 2; transform: translateY(38px) scale(0.85); opacity: 0.1; }
-    .project-entry[data-pos="6"] { z-index: 1; transform: translateY(40px) scale(0.82); opacity: 0.05; }
-    /* Swipe-out animation */
-    .project-entry.swipe-out {
-      transform: translateX(-120%) rotate(-15deg) !important;
-      opacity: 0 !important;
-      transition: transform 0.4s ease, opacity 0.3s ease;
-    }
-    .stack-counter {
-      text-align: center;
-      color: var(--text3);
-      font-size: 14px;
-      margin-top: 4px;
-    }
-    .stack-hint {
-      text-align: center;
-      color: var(--text3);
-      font-size: 13px;
-      margin-top: 8px;
-      opacity: 0.6;
+      border-color: rgba(11,147,246,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(11,147,246,0.12);
     }
     .project-badge {
       display: inline-block;
@@ -408,7 +376,7 @@
       .entry-role { font-size: 17px; }
       .entry-company { font-size: 14px; }
       .entry-bullets li { font-size: 15px; }
-      .project-stack { height: 300px; }
+      .project-grid { grid-template-columns: 1fr; }
       .project-entry { padding: 16px; }
       .project-name { font-size: 17px; }
       .tag { font-size: 13px; padding: 4px 10px; }
@@ -617,7 +585,7 @@
     <!-- Projects -->
     <div class="section">
       <div class="section-title">Projects</div>
-      <div class="project-stack">
+      <div class="project-grid">
 
       <div class="project-entry">
         <span class="project-badge">Winner: Best Use of GenAI, Hackville 2025</span>
@@ -718,8 +686,6 @@
         </ul>
       </div>
       </div>
-      <div class="stack-counter" id="stack-counter">1 / 7</div>
-      <div class="stack-hint">Click card to go to next</div>
     </div>
 
     <!-- Education -->
@@ -775,39 +741,6 @@
       }
     })();
 
-    // Project deck — Anki-style flashcard stack
-    (function() {
-      var cards = Array.from(document.querySelectorAll('.project-entry'));
-      var counter = document.getElementById('stack-counter');
-      var currentIndex = 0;
-
-      function updatePositions() {
-        cards.forEach(function(card, i) {
-          card.classList.remove('swipe-out');
-          // Position relative to current top card
-          var pos = (i - currentIndex + cards.length) % cards.length;
-          card.setAttribute('data-pos', Math.min(pos, 6));
-        });
-        counter.textContent = (currentIndex + 1) + ' / ' + cards.length;
-      }
-
-      cards.forEach(function(card) {
-        card.addEventListener('click', function(e) {
-          // Don't swipe if clicking a link
-          if (e.target.closest('a')) return;
-
-          // Swipe out the top card
-          card.classList.add('swipe-out');
-
-          setTimeout(function() {
-            currentIndex = (currentIndex + 1) % cards.length;
-            updatePositions();
-          }, 350);
-        });
-      });
-
-      updatePositions();
-    })();
   </script>
 </body>
 </html>
