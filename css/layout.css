@@ -187,8 +187,8 @@
   z-index: 49;
   display: flex;
   justify-content: center;
-  gap: 12px;
-  padding: 8px 16px;
+  gap: 16px;
+  padding: 6px 16px 8px;
   background: var(--header-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -197,6 +197,19 @@
 }
 
 .pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.pin-icon {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -205,20 +218,32 @@
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  opacity: 0.4;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pin-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .pin:hover {
   opacity: 0.7;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .pin.explored {
-  background: var(--bubble-sent);
   opacity: 1;
+}
+
+.pin.explored .pin-icon {
+  background: var(--bubble-sent);
   box-shadow: 0 2px 8px rgba(11, 147, 246, 0.3);
+}
+
+.pin.explored .pin-label {
+  color: var(--bubble-sent);
 }
 
 /* Scrollable Message Area */
