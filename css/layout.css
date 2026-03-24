@@ -43,6 +43,9 @@
 }
 
 .header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,22 +86,15 @@
 }
 
 .theme-toggle {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--theme-toggle-bg);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transition: background var(--transition-color);
+  gap: 2px;
+  transition: transform 0.15s ease;
 }
 
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-[data-theme="light"] .theme-toggle:hover {
-  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.08);
 }
 
 .theme-toggle svg {
@@ -114,23 +110,17 @@
 
 /* Header Icon Buttons (LinkedIn, Resume) */
 .header-icon-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--theme-toggle-bg);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transition: background var(--transition-color), transform 0.15s ease;
+  gap: 2px;
+  text-decoration: none;
+  transition: transform 0.15s ease;
 }
 
 .header-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
-}
-
-[data-theme="light"] .header-icon-btn:hover {
-  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.08);
+  text-decoration: none;
 }
 
 .header-icon-btn svg {
@@ -139,24 +129,25 @@
   color: var(--bubble-sent);
 }
 
+/* Shared label style for header buttons */
+.header-btn-label {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
 /* Mute Toggle */
 .mute-toggle {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--theme-toggle-bg);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transition: background var(--transition-color);
+  gap: 2px;
+  transition: transform 0.15s ease;
 }
 
 .mute-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-[data-theme="light"] .mute-toggle:hover {
-  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.08);
 }
 
 .mute-toggle svg {
