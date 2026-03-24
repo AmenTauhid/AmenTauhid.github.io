@@ -24,14 +24,6 @@ The portfolio is presented as an interactive iMessage chat. Visitors pick quick-
 - **Responsive design** — optimized for desktop, tablet, and mobile
 - **Konami code** — try it for a surprise
 
-## Sections
-
-- **Projects** — 7 project cards with detailed case study modals and GitHub links
-- **Work Experience** — 5 roles with expandable bullet points
-- **Skills** — categorized tech stack grid
-- **About** — career journey and mission statement
-- **Contact** — GitHub and LinkedIn links
-
 ## Tech Stack
 
 - HTML5 / CSS3 / Vanilla JavaScript
