@@ -1,6 +1,6 @@
 # AmenTauhid.github.io
 
-Personal portfolio website themed as an Apple iMessage conversation. Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step.
+Personal portfolio website themed as an Apple iMessage conversation. Built with vanilla HTML, CSS, and JavaScript: no frameworks, no build step.
 
 **Live:** [amentauhid.github.io](https://amentauhid.github.io)
 
