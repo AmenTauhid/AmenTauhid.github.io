@@ -1,7 +1,7 @@
 /* Tablet */
 @media (max-width: 768px) {
   .message-area {
-    padding: 144px 12px 116px;
+    padding: 164px 12px 116px;
   }
 
   .message-container {
@@ -64,11 +64,11 @@
   }
 
   .message-area {
-    padding: 130px 8px 110px;
+    padding: 148px 8px 110px;
   }
 
   .message-area::before {
-    top: 118px;
+    top: 126px;
   }
 
   .bubble {
@@ -130,7 +130,7 @@
   }
 
   .pinned-nav {
-    top: 76px;
+    top: 80px;
     gap: 10px;
     padding: 6px 12px;
   }
